@@ -1,6 +1,24 @@
-## Making a Project Website
+## About the Project
 
-### Configuration variables
+### What is it?
+
+Project description - demonstrating skills learned in ABE 516X
+
+### What is ISU-UP?
+
+ISU-UP background
+
+### What is it based on?
+
+Spring 2021 internship with ISU-UP, water user committees
+Made survey and attempted to analyze data
+Know little about data analysis I did... and so didn't do all that great of a job just meandering through excel
+
+### Project Goals
+
+Want to provide analysis from a different, more reproducible perspective that is easier to navigate and can more easily be expanded on. Organization of responses to derive more conclusions
+
+## Making the Website
 
 This instruction is specific to the slate theme but should translate well to other themes.  You can change default variables in your website build by making changes in your `_config.yml` file:
 
