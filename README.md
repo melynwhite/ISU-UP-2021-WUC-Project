@@ -4,15 +4,15 @@
 
 Project description - demonstrating skills learned in ABE 516X
 
-### What is ISU-UP?
-
-ISU-UP background
-
 ### What is it based on?
 
 Spring 2021 internship with ISU-UP, water user committees
 Made survey and attempted to analyze data
 Know little about data analysis I did... and so didn't do all that great of a job just meandering through excel
+
+### What is ISU-UP?
+
+ISU-UP background
 
 ### Project Goals
 
