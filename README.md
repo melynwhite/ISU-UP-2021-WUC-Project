@@ -37,16 +37,16 @@ This original research and the reimagined results assist ISU-UP in determining t
 ## Data
 ### Collection Method
 #### Questionnaire Development
-The questionnaire was based on research, regarding water user committees (WUC) in Uganda, and specified needs ot ISU-UP. For WUCs to be acknowledged, they must develop by-laws, determine and collect water user fees, and supervise the water source. The ISU-UP affiliates WUCs are encouraged to have seven positions (chairperson, vice chairperson, treasurer, secretary, two guards, and a representative of persons with disabilities) and women are expected to hold half of those committee positions. Documentation of households adn water user fees is expected, and having a banking mehtod or documentation is beneficial. The WUCs are expected to conduct some maintenance on the borehole. It was of high interest to ISU-UP to gain insight into the financial components, types of repairs, adn causes of repair needs for the borehole. 
+The [questionnaire](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/data/WUC-Survey_S21_cmw.pdf) was based on research, regarding water user committees (WUC) in Uganda, and specified needs ot ISU-UP. For WUCs to be acknowledged, they must develop by-laws, determine and collect water user fees, and supervise the water source. The ISU-UP affiliates WUCs are encouraged to have seven positions (chairperson, vice chairperson, treasurer, secretary, two guards, and a representative of persons with disabilities) and women are expected to hold half of those committee positions. Documentation of households adn water user fees is expected, and having a banking mehtod or documentation is beneficial. The WUCs are expected to conduct some maintenance on the borehole. It was of high interest to ISU-UP to gain insight into the financial components, types of repairs, adn causes of repair needs for the borehole. 
 
 According to the FAO Questionnaire Design guide for formal, standardized surveys, distributed surveys must be identical. They should have the same question order and word choice to provide exposure to the same stimuli in the same order. Particular words should be defined so each participant has the same knowledge for particular questions. The format needs to be accessible and identical for all such that it can be completed quickly, therefore the format of my survey was designed to be printed and used as an interview. 
 
 Parameters, topics, and key questions were outlined into key sections of the survey and then built into questions. In reviewing the questionnaire, questions and jargon were altered to accommodate for the community. Formatting was arranged according to suggestions by Rutgers’s survey preparation guidelines. The final version was reviewed by and sent to the WASH director to then be used for data collection.
 
+![Survey Sections & Example Questions](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Survey-questions.png)
+
 #### Interviews
 Data was intended to be collected from one to three water user committee members from each committee. However, due to travel distance, some water user committees were excluded. An ISU-UP staff member administered the survey via an in-person interview and transcribed the responses. An IRB was not required to purpose given the information is for internal program use only and not publication. Identifiers were included in the surveys to have the ability to ask follow-up questions of specific members. Water user committee identifiers were originally to be included in the survey to analyze the data and provide summaries of each committee. Instead, this piece of information was lacking and therefore acknowledged in the response assessment. 
-
-![Survey Sections & Example Questions](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Survey-questions.png)
 
 ### What was aquired?
 The responses to the questionnaire were handwritten and each survey was scanned and returned to me in individual pdf files. In my original review attempts, I tranferred the answers to each question, as written, to an excel sheet for each response. Through this process, I could already see missing or obscured information, where respondents neglected to answer some questions, survey pages were missing, or the interpretation of the question was different than intended. Some questions were written to review brief, numerical answers. Some questions were written as multiple choice, where the respondents could select yes/no or a/b, etc. Many of the remaining questions were short answer/free response where the intervieww described the conditions of the WUC or the borehole. 
@@ -64,12 +64,13 @@ Since the data was originally in a pdf format and crudely converted to excel, th
 Much of the collection method was beyond my control and I had limited insight into how the interviews were being conducted, so I had some concerns regarding that process. There were questions within the final version of the survey where I was questioning their relevance or the accuracy of the diction used, but ultimately included them. I was concerned regarding whether the participants would interpret the questions in the same fashion as I intended, and there were some cases where misunderstandings occurred. There were also several responses where the handwriting was illegible, and this the analysis of those responses required more assumptions than others. The more assumptions input into the data, the less reflective they are of the original respondent's perspectives. There was original concern regarding how the multiple short answer questions would be included in the analysis, as there were several different answers combined into a single cell. This was later alleviated by creating a new excel document to reflect the different challenges. 
 
 ## Analysis
-The project question asks: *Is there a relationship between financial characteristics and observed challenges as reported by surveyed water user committee members?*
+*Is there a relationship between financial characteristics and observed challenges as reported by surveyed water user committee members?*
 
 ### Workflow
 To obtain results which answer the project question, the data followed a workflow of pre-processing, data processesing, and conclusions from results. Some of the original workflow intentions were not achieved due to time or data limitations. The analysis process was chosen based on the data needs. Pre-processing in excel was essential to create raw data that was usable for jupyter notebook. The data processing included much data wrangling and text cleaning that organize the data once more into data that could be visualized or analyzed. The data visualization were important to graphically observe the responses and most of which ended in a form originally requested by ISU-UP. The conclusions were formed by statistical assessments (linear regression) or by visual comparisons of the obtained results. 
 
 ![Project Workflow](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/workflow.png)
+
 #### Tools used
 The following are key class concepts that were integrated into the project:
 - loading python packages and data
@@ -264,6 +265,8 @@ At this point, the data is in a more manageable, consistent, usable form
 ![data-head](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/data-head.png)
 
 #### Data Visualization
+Now that (most of) the data is manageable, it can be graphed in different ways to derive conclusions. This step was done by hand in excel in the previous review attempt, which lead to sufficient, but unclear and not reproducible results. 
+
 Steps for Descriptors & Visualization (reflection of the order of assessment):
 1) Numerical Values (overview)  
 2) WUC Gender Composition (Gender Ratio)  
@@ -275,6 +278,50 @@ Steps for Descriptors & Visualization (reflection of the order of assessment):
 8) Fees & Collection
 9) O&M Cost; Monitoring; Repair  
 10) Documentation(s)
+
+WUC Gender Composition:
+```python
+#Boxplot of WUC and Respondents
+data_dem = data[['6_women', '6_men', '6_persons-with-disabilities']]
+data_dem
+
+sns.set_theme(palette='terrain', style='ticks')
+sns.boxplot(data=data_dem).set(xlabel='WUC Demographic Composition', ylabel='Number of Persons');
+```
+![Out-25](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-25.png)
+
+```python
+#Pie Chart of 50% women
+data_dem['Req Met'] = 'yes/no'
+
+for r in range (23):
+    if data_dem.iloc[r, 0] >= data_dem.iloc[r, 1]:
+        data_dem.iloc[r, 3] = 'yes'
+    else:
+        data_dem.iloc[r, 3] = 'no'
+
+gender_count = pd.value_counts(data_dem['Req Met'], sort=True)
+
+gender_count.plot(kind='pie', autopct='%1.0f%%', colors=['darkseagreen', 'cadetblue'])
+plt.title('Water User Committee Demographics (50%+ women) based on Response');
+```
+![Out-29](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-29.png)
+
+Conclusion - Most of the water user committees that the respondents represent have sufficient gender ratio. However, with nearly half of the respondents reporting their committees lacking the proper gender ratio, the negligence of meeting the requirement should be addressed. It would be interesting to ask: for what reason(s) are women not sufficiently represented on the water user committee? This might turn out answers relating to those volunteering or stereotypes against women. 
+
+Position of Respondents:
+```python
+data_pos = data[1].value_counts()
+pos_count = pd.value_counts(data[1], sort=True)
+pos_count.plot(kind='bar', color='seagreen')
+plt.title('Respondent WUC Position')
+plt.xlabel('Position')
+plt.ylabel('Number of Respondents');
+```
+![out-32](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-32.png)
+
+Conclusion - Most of the interviewees were chairperson of their respective WUC. My assumption is that they are sufficiently aware of most operations within the committee and are able to provide reliable answers. The treasurers are most likely more aware and knowledgable of the financial characteristics and the guards of monitoring and operation/maintenance needs. It would be interesting to know if the respondent position was related to the types of challenges reported (not observed in this project). 
+
 
 
 process and many examples of code and outputs of the plots and stuff
@@ -289,7 +336,62 @@ Identifying that at this point I was very worried about the text part that was c
 ### Classification & Statistics
 #### Supervised Machine Learning
 Wanted to practice this skill and used the naive bayes to classify if a WUC met gender ratio requirements (probs can mention that Uganda requires it)
-*include code and plots*
+
+```python
+#Review of Naive Bayes Classification (p1)
+
+#X-Variables
+X_dem = data_dem[['6_women', '6_men']]
+print(X_dem.shape)
+
+#Categories
+data_dem['Req_num'] = data_dem['Req Met'].map({'yes':1, 'no':0})
+y_dem = data_dem['Req_num']
+print(y_dem.shape)
+
+#Import split and NB
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+
+#Training & Testing Data
+X_train, X_test, y_train, y_test = train_test_split(X_dem, y_dem)
+print('X Train Shape:', X_train.shape)
+print('y Train Shape:', y_train.shape)
+
+#Training
+gnb = GaussianNB()
+train = gnb.fit(X_train, y_train)
+
+#Testing
+y_pred = train.predict(X_test)
+print(y_pred)
+
+print('X Test Shape:', X_test.shape)
+print('y Test Shape:', y_test.shape)
+
+#New DataFrame
+test = pd.DataFrame(X_test)
+test['Req Met'] = y_pred
+test.head(5)
+
+#Checking Accuracy
+from sklearn import metrics
+from sklearn.metrics import classification_report, f1_score, accuracy_score, confusion_matrix
+
+print(metrics.accuracy_score(y_test, y_pred))
+
+cm = metrics.confusion_matrix(y_test, y_pred)
+cmdf = pd.DataFrame(cm, index = ['No', 'Yes'], columns = ['No', 'Yes'])
+print(cmdf)
+
+print(classification_report(y_pred, y_test))
+
+sns.heatmap(cm, annot=True, xticklabels=['No', 'Yes'], yticklabels=['No', 'Yes'])
+plt.title('Heatmap of Naive Bayes Classification, Gender Ratio')
+plt.xlabel('True')
+plt.ylabel('Predicted');
+```
+![Out-31](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-31.png)
 
 #### Linear Regression
 Wanted to create a way to determin the relationships between different pieces of information
