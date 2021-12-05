@@ -1,7 +1,7 @@
 ## Project Introduction
 ### What is it?
 #### Project Question
-Is there a relationship between financial characteristics and observed challenges as reported by surveyed water user committee members?
+*Is there a relationship between financial characteristics and observed challenges as reported by surveyed water user committee members?*
 
 #### Project Goal
 To provide data visualization and introductory analysis of survey results from a different, more reproducible perspective that is navigable and can more easily be expanded on.
@@ -33,21 +33,32 @@ This original research and the reimagined results assist ISU-UP in determining t
 
 ## Data
 ### Collection Method
-Information of survey development, distribution, and receival
-*include photo of example survey*
+#### Questionnaire Development
+The questionnaire was based on research, regarding water user committees (WUC) in Uganda, and specified needs ot ISU-UP. For WUCs to be acknowledged, they must develop by-laws, determine and collect water user fees, and supervise the water source. The ISU-UP affiliates WUCs are encouraged to have seven positions (chairperson, vice chairperson, treasurer, secretary, two guards, and a representative of persons with disabilities) and women are expected to hold half of those committee positions. Documentation of households adn water user fees is expected, and having a banking mehtod or documentation is beneficial. The WUCs are expected to conduct some maintenance on the borehole. It was of high interest to ISU-UP to gain insight into the financial components, types of repairs, adn causes of repair needs for the borehole. 
+
+According to the FAO Questionnaire Design guide for formal, standardized surveys, distributed surveys must be identical. They should have the same question order and word choice to provide exposure to the same stimuli in the same order. Particular words should be defined so each participant has the same knowledge for particular questions. The format needs to be accessible and identical for all such that it can be completed quickly, therefore the format of my survey was designed to be printed and used as an interview. 
+
+Parameters, topics, and key questions were outlined into key sections of the survey and then built into questions. In reviewing the questionnaire, questions and jargon were altered to accommodate for the community. Formatting was arranged according to suggestions by Rutgers’s survey preparation guidelines. The final version was reviewed by and sent to the WASH director to then be used for data collection.
+
+#### Interviews
+Data was intended to be collected from one to three water user committee members from each committee. However, due to travel distance, some water user committees were excluded. An ISU-UP staff member administered the survey via an in-person interview and transcribed the responses. An IRB was not required to purpose given the information is for internal program use only and not publication. Identifiers were included in the surveys to have the ability to ask follow-up questions of specific members. Water user committee identifiers were originally to be included in the survey to analyze the data and provide summaries of each committee. Instead, this piece of information was lacking and therefore acknowledged in the response assessment. 
+
+![Survey Sections & Example Questions](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Survey-questions.png)
 
 ### What was aquired?
-list of general information obtained based on the questions
-*photo of example survey responses*
-relevance of certain information
-clear identification of data input
+The responses to the questionnaire were handwritten and each survey was scanned and returned to me in individual pdf files. In my original review attempts, I tranferred the answers to each question, as written, to an excel sheet for each response. Through this process, I could already see missing or obscured information, where respondents neglected to answer some questions, survey pages were missing, or the interpretation of the question was different than intended. Some questions were written to review brief, numerical answers. Some questions were written as multiple choice, where the respondents could select yes/no or a/b, etc. Many of the remaining questions were short answer/free response where the intervieww described the conditions of the WUC or the borehole. 
+
+![Example Survey Answers](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/survey-answers.png)
+
+Several of the initial questions asked of interviewees were not relevant to my particular analysis, rather they were intended to provide easy questions to allows the respondent to transition into the questionnaire. The final question, "Additional commentary" was similarly created to provide a transition out of the survey, and was not used for analysis. However, responses to the final question could be applied to other areas of improvement for the program. 
+
+The remaining questions were used as the data input. The more relevant information that I was seeking are those related the the financial characteristics (water user fee, operation and maintenance cost, donations, collection rate), the repairs needed, and the challenges noted by the different respondents. 
 
 ### Data Needs
-What needed to be done for downstream analysis
+Since the data was originally in a pdf format and crudely converted to excel, the data needed to be reorganized into another excel document before loading into jupyter notebook. For any further downstream analysis, the data needed to be within one excel sheet, with the indeces being the respondents and the columns the question. Questions were referred to by the number rather than description for the sake of abbreviation. 
 
 ### Concerns
-things about the survey, collection method, responses and data that I was worried about; different assumptions (language and understanding) that may have been made
-wishing i had changed the format of the questions to make things way more consistent
+Much of the collection method was beyond my control and I had limited insight into how the interviews were being conducted, so I had some concerns regarding that process. There were questions within the final version of the survey where I was questioning their relevance or the accuracy of the diction used, but ultimately included them. I was concerned regarding whether the participants would interpret the questions in the same fashion as I intended, and there were some cases where misunderstandings occurred. There were also several responses where the handwriting was illegible, and this the analysis of those responses required more assumptions than others. The more assumptions input into the data, the less reflective they are of the original respondent's perspectives. There was original concern regarding how the multiple short answer questions would be included in the analysis, as there were several different answers combined into a single cell. This was later alleviated by createda new excel document to reflect the different challenges. 
 
 ## Analysis
 Reminder of Question
