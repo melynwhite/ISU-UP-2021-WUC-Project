@@ -58,16 +58,24 @@ The remaining questions were used as the data input. The more relevant informati
 Since the data was originally in a pdf format and crudely converted to excel, the data needed to be reorganized into another excel document before loading into jupyter notebook. For any further downstream analysis, the data needed to be within one excel sheet, with the indeces being the respondents and the columns the question. Questions were referred to by the number rather than description for the sake of abbreviation. 
 
 ### Concerns
-Much of the collection method was beyond my control and I had limited insight into how the interviews were being conducted, so I had some concerns regarding that process. There were questions within the final version of the survey where I was questioning their relevance or the accuracy of the diction used, but ultimately included them. I was concerned regarding whether the participants would interpret the questions in the same fashion as I intended, and there were some cases where misunderstandings occurred. There were also several responses where the handwriting was illegible, and this the analysis of those responses required more assumptions than others. The more assumptions input into the data, the less reflective they are of the original respondent's perspectives. There was original concern regarding how the multiple short answer questions would be included in the analysis, as there were several different answers combined into a single cell. This was later alleviated by createda new excel document to reflect the different challenges. 
+Much of the collection method was beyond my control and I had limited insight into how the interviews were being conducted, so I had some concerns regarding that process. There were questions within the final version of the survey where I was questioning their relevance or the accuracy of the diction used, but ultimately included them. I was concerned regarding whether the participants would interpret the questions in the same fashion as I intended, and there were some cases where misunderstandings occurred. There were also several responses where the handwriting was illegible, and this the analysis of those responses required more assumptions than others. The more assumptions input into the data, the less reflective they are of the original respondent's perspectives. There was original concern regarding how the multiple short answer questions would be included in the analysis, as there were several different answers combined into a single cell. This was later alleviated by creating a new excel document to reflect the different challenges. 
 
 ## Analysis
-Reminder of Question
+The project question asks: *Is there a relationship between financial characteristics and observed challenges as reported by surveyed water user committee members?*
+
 ### Workflow
-Brief description of how I needed to get to that question
-*input workflow diagram*
+To obtain results which answer the project question, the data followed a workflow of pre-processing, data processesing, and conclusions from results. Some of the original workflow intentions were not achieved due to time or data limitations. The analysis process was chosen based on the data needs. Pre-processing in excel was essential to create raw data that was usable for jupyter notebook. The data processing included much data wrangling and text cleaning that organize the data once more into data that could be visualized or analyzed. The data visualization were important to graphically observe the responses and most of which ended in a form originally requested by ISU-UP. The conclusions were formed by statistical assessments (linear regression) or by visual comparisons of the obtained results. 
+
+![Project Workflow](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/workflow.png)
 #### Tools used
-(loading python packages and data, reading documentaion, data wrangling, descriptive statistics, machine learning, data visualization, and text wrangling)
-integration of class concepts and why they were chosen
+The following are key class concepts that were integrated into the project:
+- loading python packages and data
+- reading documentaion
+- data wrangling
+- descriptive statistics
+- machine learning
+- data visualization
+- text wrangling
 
 ### Data Exploration
 #### Excel Stuff
