@@ -1,24 +1,153 @@
-## About the Project
-
+## Project Introduction
 ### What is it?
+#### Project Question
+Is there a relationship between financial characteristics and observed challenges as reported by surveyed water user committee members?
 
-Project description - demonstrating skills learned in ABE 516X
+#### Project Goal
+To provide data visualization and introductory analysis of survey results from a different, more reproducible perspective that is navigable and can more easily be expanded on.
+
+#### Project Description
+Using learned tools from the [ABE](https://www.abe.iastate.edu/) 516X course to observe, visualize, and derive analyses from previously collected survey data. 
 
 ### What is it based on?
+In the Spring of 2021, I completed a virtual internship with ISU-UP, through my [Global Resource Systems](https://www.globe.iastate.edu/) curriculum, where I assisted in reviewing the current operation and management status of the water user committies affiliates with the program. Uganda requires every community-owned improved water source to have representing community members on a water user committee managing borehole needs. This includes maintaining proper hygiene, attending to repairs, and managing water user fees. In order to continue to improve the communities' clean access to water, there was a need for ISU-UP to investigate certain aspects of water user committees and borehole operations and maintenance. They needed a review of the water user committies and identification of certain challenges they were facing. 
 
-Spring 2021 internship with ISU-UP, water user committees
-Made survey and attempted to analyze data
-Know little about data analysis I did... and so didn't do all that great of a job just meandering through excel
+During my short internship, I researched water user committees in Uganda, created and distributed a survey to randomly selected water user committee members across the Kamuli district with affiliated boreholes, received and briefly reviewed the results, and created a written report and oral presentation. 
 
-### What is ISU-UP?
+However, then I knew little regarding data analysis and used the limited tools I had in excel to produce graphs and a summary of respondent information. This project is driven from the lack of sufficient view of data as well as a lack of analysis capabilities, where I sought to "redo" the data visualization and introduce some analysis components into the results. 
 
-ISU-UP background
+### What is ISU-UP and why does this matter?
+The [Iowa State University - Uganda Program (ISU-UP)](https://www.globe.iastate.edu/global-experience/extension-projects-uganda/) is a facet of Iowa State University's College of Agriculture and Life Sciences that works in Partnership with Makerere University as well as local instituions in Uganda to operate the [Center for Sustainable Rural Livelihoods (CSRL)](https://www.csrl.cals.iastate.edu/). In coordination since 2003, the CSRL is located in the Kamuli district of rural Uganda and works in tandem with local residents to improve and incorporate sustainable solutions meeting the needs of the community. *photo of Uganda* 
 
-### Project Goals
+ISU-UP has six key programs to support the community: Agronomy & Postharvest, Community Nutrition, Education, Livestock, Entrepreneurship, and WASH. Each program has a series of projects that are dedicated to serving the community. The [WASH](https://www.csrl.cals.iastate.edu/water-sanitation-and-hygiene) program at the CSRL seeks to provide access to sustainable and clean water to the people of the Kamuli district. *photo of "what we do"
 
-Want to provide analysis from a different, more reproducible perspective that is easier to navigate and can more easily be expanded on. Organization of responses to derive more conclusions
+Water Access, Sanitation, and Hygiene programs seek to assist community in obtaining this access to safe drinking water. There are six areas in which WASH operates: make water safe to drink and use, improve hygiene and sanitation, respond to complex internaitonal emergencies and outbreaks, control and eliminate disease, identify adn characterize disease, adn lastly educate and train aboutt WASH. 
 
-## Making the Website
+To accomplish this mission, ISU-UP has drilled boreholes in the surrounding region that provides sources of safe drinking water and has incorporated sanitation proejcts. This continues to benefit the community by increasing hygiene and awareness to decrease rates of illness and disease. 
+
+This original research and the reimagined results assist ISU-UP in determining the needs of the community and provide clear evidence for future improvements to the WASH program, and by extension, improving the lives of the surrounding community. 
+
+## Data
+### Collection Method
+Information of survey development, distribution, and receival
+*include photo of example survey*
+
+### What was aquired?
+list of general information obtained based on the questions
+*photo of example survey responses*
+relevance of certain information
+clear identification of data input
+
+### Data Needs
+What needed to be done for downstream analysis
+
+### Concerns
+things about the survey, collection method, responses and data that I was worried about; different assumptions (language and understanding) that may have been made
+wishing i had changed the format of the questions to make things way more consistent
+
+## Analysis
+Reminder of Question
+### Workflow
+Brief description of how I needed to get to that question
+*input workflow diagram*
+#### Tools used
+(loading python packages and data, reading documentaion, data wrangling, descriptive statistics, machine learning, data visualization, and text wrangling)
+integration of class concepts and why they were chosen
+
+### Data Exploration
+#### Excel Stuff
+discussion *some photos* of what was happening in the excel file
+assumptions and transformations that had to be made on the front of pdf to excel to excel
+
+#### Data Wrangling
+Process and example code of how I had to deal with that
+addressing more assumptions about the data
+
+#### Data Visualization
+process and many examples of code and outputs of the plots and stuff
+mention difference between doing it by hand in excel versus with python (easy to copy paste and repeat)
+(it'd honestly be great to create a function that would do it all... but i'm really bad at functions)
+*show some plots here!*
+
+#### Concerns
+Readdressing some of those assumptions; worried that not true reflection of respondents due to the missing and assumed data
+Identifying that at this point I was very worried about the text part that was coming next
+
+### Classification & Statistics
+#### Supervised Machine Learning
+Wanted to practice this skill and used the naive bayes to classify if a WUC met gender ratio requirements (probs can mention that Uganda requires it)
+*include code and plots*
+
+#### Linear Regression
+Wanted to create a way to determin the relationships between different pieces of information
+moving forward would ideally be able to say x does or doesn't seem to relate to this other thing
+general result is none so far
+*include code and plots*
+because of its greater relevance beyond the project, created this as my class exercise (will see later)
+
+### Text Data
+#### Cleaning & Wrangling
+Go through this process
+outline some code and clarify more assumptions
+having to redo the excel thing again
+
+#### Visualization
+Describing what word clouds are
+showing some code and *wordclouds*
+not sure if the other things fit here or in other
+
+#### Determining Relationships
+isolating the data and doing the counting stuff
+
+#### Concerns
+This is difficult to reproduce because of the way I collected data, and also because of how I managed to put it into excel and python
+would have to manipulate the excel file a bit, or create a completely, new one like i did before being able to do any of this stuff
+wasn't really clear on text classification before and got lost in the tokenization of things, so I decided to forgo it
+This isn't going to be the depth of analysis that I had originally wanted, so the pieces were carefully chosen
+
+## Results
+Question: review the project question
+Answer: what the result is
+### Common Challenges
+maybe a thought here, maybe not
+#### Different Water User Fee Amount
+the code and clear result of this output
+
+#### Different Water User Fee Collection Rate
+the code and clear result of this output
+
+### Discussion
+thoughts on those results; briefly mention wanting to do more analysis but felt limited by data, knowledge, and time
+
+### Implications
+what do the results mean for ISU-UP
+my suggestions on what they need to focus on
+further research that should be done
+
+## FAIR Principles
+define the principles
+general discussion of reproducibility
+explain how my process meets the principles
+explain how my process does not meet the principles
+
+## Class Exercise
+walking classmates through partial wrangling and linear regression 
+because this seemed the most useful to other projects
+show the code and example output from previously
+
+from Howe: 
+In each project, I'd like to see a homework assignment that the class can do/evaluate to learn more about your data.  This should be a reproducible notebook that allows them to learn one or more aspects of your data workflow.  It is also an opportunity to share your research with your colleagues.
+
+## Project Reflection
+what did I learn about my data
+what did I learn from doing the project
+how might i go about doing it differently
+what would i have done with more time
+
+# End
+
+
+# Making the Website
 
 This instruction is specific to the slate theme but should translate well to other themes.  You can change default variables in your website build by making changes in your `_config.yml` file:
 
@@ -50,31 +179,6 @@ To create links to other pages, you can read this article:  https://github.blog/
 
 You can use a website to host notebooks.  First, you'll want to get the "raw" url from Github where your notebook is stored.  Then, navigate to https://nbviewer.jupyter.org and paste that URL.  The result will be a new generated URL that hosts your notebook.  This can be a [link](https://nbviewer.jupyter.org/github/isu-abe/516x/blob/master/module2/bootcamp/notebooks/nocode/Module%20IIB%20-%20Python%20Basics%20-%20no%20code.ipynb) in your website.
 
-## Suggestions for Project Reporting
-
-### Interesting question 
-
-What is the scientitifc goal?  What would you do if you had all the data?  What do you want to predict or estimate?  Why is this relevant to ABE researchers or the field?  Provide some background on the rationale and relevance.
-
-### Data description
-
-What kind of data is avialble?  How is your data collected?  Are there any concerns about the data?  Which data is the most relevant?  Is the data easy to acccess? Will the data change over time?  What needs to be done to the data to get it ready for any downstream analysis?
-
-### Explore the data
-
-Demonstrate what you would do to describe the data and if it has any patterns or anomolies.  Make some plots.
-
-### Model the data
-
-Build a model, fit the model, validate the model.
-
-### Communciate and visualize the results
-
-What did you learn and do the results make sense?  Revisit your initial question and answer it.  H
-
-### Class Exercise
-
-In each project, I'd like to see a homework assignment that the class can do/evaluate to learn more about your data.  This should be a reproducible notebook that allows them to learn one or more aspects of your data workflow.  It is also an opportunity to share your research with your colleagues.
 
 Here is an example of a fantastic project website:
 
@@ -123,22 +227,3 @@ Templates often rely on URLs supplied by GitHub such as links to your repository
 *Note: You must remove the `site.` prefix, and each variable name (after the `github.`) should be indent with two space below `github:`.*
 
 For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
-
-
-### Contributing (Advanced)
-
-Interested in contributing to Slate? We'd love your help. Slate is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
-
-### Previewing the theme locally
-
-If you'd like to preview the theme locally (for example, in the process of proposing a change):
-
-1. Clone down the theme's repository (`git clone https://github.com/pages-themes/slate`)
-2. `cd` into the theme's directory
-3. Run `script/bootstrap` to install the necessary dependencies
-4. Run `bundle exec jekyll serve` to start the preview server
-5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
-
-### Running tests
-
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` one before the test script will work.
