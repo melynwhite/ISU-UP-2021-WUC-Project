@@ -92,8 +92,176 @@ For use of python in jupyter notebook, all the responses were moved into a table
 ![Adjusted Excel Data](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/data-usable.png)
 
 #### Data Wrangling
-Process and example code of how I had to deal with that
-addressing more assumptions about the data
+Data wrangling was used to transform the raw data into information where visualizations and comparisions can be made. This required removing blank rows and irrelevant columns, filling in missing values with assumptions, cleaning capitalization, substituting ranges for singular numbers, and adjusting written time measurements as numerical values. These needs were determined after observing: shapes, types, null values, unique columns and answers, and describing the data. 
+
+General set-up and loading data:
+```python
+#General imports
+import pandas as pd
+import numpy as np
+from scipy import stats
+
+#Visualizations
+import matplotlib.pyplot as plt
+import seaborn as sns; sns.set()
+
+%matplotlib inline
+
+#Load Data
+raw_df = pd.read_excel('E:/ISU/Graduate/Courses/F21/ABE 516X/ISU-UP_RawData.xlsx')
+print('DataFrame Shape:', raw_df.shape)
+raw_df.head()
+```
+
+Example of viewing raw data before wrangling:
+```python
+#Monitoring and Operation
+print('Monitoring', raw_df[13].unique())
+print('Mon Freq', raw_df[14].unique())
+print('Service Freq', raw_df[15].unique())
+print('Repair', raw_df[19].unique())
+print('Documentation', raw_df[20.1].unique())
+```
+![Out-10](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-10.png)
+
+This output showed me the different answers for monitoring (yes, a, b, c, or some combination) that reflected if and how committees monitored the borehole. This output informs that the different combination of answers can be evaluated, but would need to be organized differently beforehand (put into a different dataframe separating out the answers). This also shows the different options for monitoring frequency. Each response can be transformed into number of days or times per year for more straightforward assessments. Nan values are also present among these answers, and are an indication that they either need to be removed or filled with an assumption. Other views of these answers revealed the same answer but under different capitalization conventions, which would need to be altered for consistency later. It also showed some rates where the vocabulary was different but the answer the same (e.g. three times per year versus every four months). Data wrangling allowed for consistency as demonstrated below. 
+
+Dropping irrelevant columns, rows:
+```python
+#Drop row 8 and columns Respondent, 10.2; reindex
+data_df = raw_df.drop(index=8, columns=['Respondent'])
+data_df = data_df.reset_index(drop=True)
+
+data_df = data_df.drop(columns=[10.2])
+data = data_df.copy()
+```
+
+Assumptions (filling in nan or replacing values):
+```python
+#Task 2 - Deal with assumptions
+
+#10.1: none, nan = no
+#11: nan, range = avg value
+#12.a.1: nan = no
+#12.a.3: range = avg; none = 0
+#17: nan = none
+#19: nan = b
+#20.1: nan = yes
+
+#10.1
+data.iloc[2, 13] = 'no'
+#11
+data.iloc[0, 14] = 65000
+data.iloc[18,14] = 75000
+data[11].fillna(data[11].mean())
+#12.a.1
+data['12.a.1'].fillna('no')
+#12.a.3
+data.iloc[1, 18] = 120000
+data.iloc[3, 18] = 90000
+data.iloc[4, 18] = 110000
+data.iloc[5, 18] = 75000
+data.iloc[6, 18] = 70000
+data.iloc[7, 18] = 105000
+data.iloc[9, 18] = 150000
+data.iloc[10, 18] = 105000
+data.iloc[11, 18] = 65000
+data.iloc[12, 18] = 125000
+data.iloc[13, 18] = 75000
+data.iloc[15, 18] = 75000
+#data['12.a.3'].replace(to_replace='none', value=0)
+for r in range (23):
+    if data.iloc[r, 18] == 'none':
+        data.iloc[r, 18] = 0
+#12.a.4
+for r in range (23):
+    if data.iloc[r, 19] == 'none':
+        data.iloc[r, 19] = 'no'
+#17
+data[17].fillna('none')
+#19
+data[19].fillna('b')
+#20.1
+data[20.1].fillna('yes')
+```
+The above assumptions were based on the knowledge of the data. Question 10.1 matched with question 10.2. If 10.2 was blank or NA, then it was assumed 10.1 was 'no.' Question 17 asked the respondent to describe the most recent borehole breakdown. Some respondents answered with "no major breakdown" which was altered in excel to "none". But some neglected to answer the question and some had this survey page missing, and in those cases I assumed that the answer was also along the lines of no major/reportable breakdown. Question 19 asked who was responsible for repairs and most participants answered "b", which means they hired a local, skilled mechanic to complete the repairs. Since all but one of the responses listed b instead of a (asking a skilled committee member), the assumption was that b would have been the answer. As more assumptions were made in filling or replacing values, the less likely the data would accurately reflect the respondents' true perspectives. 
+
+Addressing capitalization:
+```python
+print(data[7.1].unique())
+```
+![Out-15](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-15.png)
+
+```python
+wordcol = [1, 2, 3, 5, 7.1, 7.2, 9.1, 10.1, 12, '12.a.4', '12.b.1', '12.b.2', '12.b.3', '12.b.4', '12.b.5', 13, 14, 15, 16, 17, 18, 19, 21, 22, 23]
+
+for c in wordcol:
+    data[c] = data[c].str.lower()
+print(data[7.1].unique())
+print(data['12.a.4'].unique())
+```
+![Out-16](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-16.png)
+
+Adjusting time inconsistencies and transforming to numerical values:
+```python
+#Frequencies (training, collection rate, repair, monitoring)
+#8 -> x times per year
+#12.b.2 -> do x times per year (e.x. monthly = 12, weekly = 52, annually = 1)
+#14 -> x times per year
+#15 -> x times per year
+
+timecol = [10, 21, 26, 27]
+
+for r in range (23):
+    for c in timecol:
+        if data.iloc[r, c] == 'once a year' or data.iloc[r, c] == 'yearly' or data.iloc[r, c] == 'annually':
+            data.iloc[r, c] = 1
+        if data.iloc[r, c] == 'biannually':
+            data.iloc[r, c] = 2
+        if data.iloc[r, c] == '3 times per year' or data.iloc[r, c] == 'every 4 months':
+            data.iloc[r, c] = 3
+        if data.iloc[r, c] == '4 times per year' or data.iloc[r, c] == 'every 3 months':
+            data.iloc[r, c] = 4
+        if data.iloc[r, c] == '6 times per year' or data.iloc[r, c] == 'every 2 months':
+            data.iloc[r, c] = 6
+        if data.iloc[r, c] == 'monthly':
+            data.iloc[r, c] = 12
+        if data.iloc[r, c] == 'biweekly':
+            data.iloc[r, c] = 26
+        if data.iloc[r, c] == 'weekly':
+            data.iloc[r, c] = 52
+        if data.iloc[r, c] == 'daily':
+            data.iloc[r, c] = 365
+```
+```python
+#User Fee
+#12.b.1 -> do amount per household per year
+data['12.b.1']
+
+#assume row 1 should be 5000 per household per year
+#assume row 6 should be 5000 per hoursehold per year
+
+data.iloc[1, 20] = '5000 per household per year'
+data.iloc[6, 20] = '5000 per household per year'
+
+for r in range(23):
+    if data.iloc[r, 20][-5:] == 'month':
+        data['12.b.1'] = data['12.b.1'].str.slice(0, 3)
+    else:
+        data['12.b.1'] = data['12.b.1'].str.slice(0, 4)
+```
+```python
+#Convert to integers from string
+data[[4, '6_women', '6_men', '6_persons-with-disabilities', 9.2, 11, '12.a.3', '12.b.1', '12.b.2', 14, 15]]
+data[[4, '6_women', '6_men', '6_persons-with-disabilities', 9.2, 11, '12.a.3', '12.b.1', '12.b.2', 14, 15]] = data[[4, '6_women', '6_men', '6_persons-with-disabilities', 9.2, 11, '12.a.3', '12.b.1', '12.b.2', 14, 15]].apply(pd.to_numeric)
+
+#User fee to annual value
+for r in range(23):
+    if data.iloc[r, 20] <= 4999:
+        data.iloc[r, 20] = (data.iloc[r, 20]) * 12
+```
+At this point, the data is in a more manageable, consistent, usable form
+![data-head](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/data-head.png)
 
 #### Data Visualization
 Steps for Descriptors & Visualization (reflection of the order of assessment):
