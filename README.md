@@ -17,15 +17,19 @@ During my short internship, I researched water user committees in Uganda, create
 However, then I knew little regarding data analysis and used the limited tools I had in excel to produce graphs and a summary of respondent information. This project is driven from the lack of sufficient view of data as well as a lack of analysis capabilities, where I sought to "redo" the data visualization and introduce some analysis components into the results. 
 
 ### What is ISU-UP and why does this matter?
-The [Iowa State University - Uganda Program (ISU-UP)](https://www.globe.iastate.edu/global-experience/extension-projects-uganda/) is a facet of Iowa State University's College of Agriculture and Life Sciences that works in Partnership with Makerere University as well as local instituions in Uganda to operate the [Center for Sustainable Rural Livelihoods (CSRL)](https://www.csrl.cals.iastate.edu/). In coordination since 2003, the CSRL is located in the Kamuli district of rural Uganda and works in tandem with local residents to improve and incorporate sustainable solutions meeting the needs of the community. *photo of Uganda* 
+The [Iowa State University - Uganda Program (ISU-UP)](https://www.globe.iastate.edu/global-experience/extension-projects-uganda/) is a facet of Iowa State University's College of Agriculture and Life Sciences that works in Partnership with Makerere University as well as local instituions in Uganda to operate the [Center for Sustainable Rural Livelihoods (CSRL)](https://www.csrl.cals.iastate.edu/). In coordination since 2003, the CSRL is located in the Kamuli district of rural Uganda and works in tandem with local residents to improve and incorporate sustainable solutions meeting the needs of the community.
 
-ISU-UP has six key programs to support the community: Agronomy & Postharvest, Community Nutrition, Education, Livestock, Entrepreneurship, and WASH. Each program has a series of projects that are dedicated to serving the community. The [WASH](https://www.csrl.cals.iastate.edu/water-sanitation-and-hygiene) program at the CSRL seeks to provide access to sustainable and clean water to the people of the Kamuli district. *photo of "what we do"
+ISU-UP has six key programs to support the community: Agronomy & Postharvest, Community Nutrition, Education, Livestock, Entrepreneurship, and WASH. Each program has a series of projects that are dedicated to serving the community. The [WASH](https://www.csrl.cals.iastate.edu/water-sanitation-and-hygiene) program at the CSRL seeks to provide access to sustainable and clean water to the people of the Kamuli district.
+
+![Uganda Map](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Uganda-map.png)       ![CSRL](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/CSRL_what-we-do.png)
 
 Water Access, Sanitation, and Hygiene programs seek to assist community in obtaining this access to safe drinking water. There are six areas in which WASH operates: make water safe to drink and use, improve hygiene and sanitation, respond to complex internaitonal emergencies and outbreaks, control and eliminate disease, identify adn characterize disease, adn lastly educate and train aboutt WASH. 
 
 To accomplish this mission, ISU-UP has drilled boreholes in the surrounding region that provides sources of safe drinking water and has incorporated sanitation proejcts. This continues to benefit the community by increasing hygiene and awareness to decrease rates of illness and disease. 
 
 This original research and the reimagined results assist ISU-UP in determining the needs of the community and provide clear evidence for future improvements to the WASH program, and by extension, improving the lives of the surrounding community. 
+
+![Children at borehole](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Borehole-children.png)   ![Water User at borehole](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Borehole-water-user.png)   ![ISU-UP at borehole](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Borehole-isu-up.png)
 
 ## Data
 ### Collection Method
