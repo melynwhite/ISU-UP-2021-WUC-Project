@@ -1,3 +1,6 @@
+#### [Jupyter Notebook Link](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/ISU-UP%202021%20WUC%20Project.ipynb)
+##### [Data](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/tree/master/data)
+
 ## Project Introduction
 ### What is it?
 #### Project Question
@@ -79,14 +82,33 @@ The following are key class concepts that were integrated into the project:
 
 ### Data Exploration
 #### Excel Stuff
-discussion *some photos* of what was happening in the excel file
-assumptions and transformations that had to be made on the front of pdf to excel to excel
+As previously mentioned, the original excel file was sufficient for the time, but not for any further analysis. Each participant's survey was initially within an individual excel sheet as the raw data. The summarized data included an excel sheet for the different types of responses. The text responses to challenges, repairs, and successes were thoroughly examined before I identified key terms, categorized information, and then counted response number. 
+
+![Original Excel](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/raw-original.png)
+![Excel Responses](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/raw-answers.png)
+
+For use of python in jupyter notebook, all the responses were moved into a table, with some verification needed from the origianl participant's file. The index because respondent number and the columns became the question number. Responses were input as close to the original answer as possible, but with ammendments that allowed the data to be more consistent across responses (e.g. 5000 versus 5000 per house versus 5000 annually versus 5000 per household per year). Again, assumptions regarding responses that were illegible were assumed. 
+
+![Adjusted Excel Data](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/data-usable.png)
 
 #### Data Wrangling
 Process and example code of how I had to deal with that
 addressing more assumptions about the data
 
 #### Data Visualization
+Steps for Descriptors & Visualization (reflection of the order of assessment):
+1) Numerical Values (overview)  
+2) WUC Gender Composition (Gender Ratio)  
+3) Respondent Position  
+4) Training & Meeting Frequency  
+5) Household overview  
+6) Banking system  
+7) Donations  
+8) Fees & Collection
+9) O&M Cost; Monitoring; Repair  
+10) Documentation(s)
+
+
 process and many examples of code and outputs of the plots and stuff
 mention difference between doing it by hand in excel versus with python (easy to copy paste and repeat)
 (it'd honestly be great to create a function that would do it all... but i'm really bad at functions)
