@@ -393,15 +393,20 @@ plt.title('Percentage of Respondents According to Frequence of Borehole Service'
 
 Conclusion - Most respondents service the borehole monthly. Questions that could be derived from this result are: are more repairs required for boreholes serviced less frequently? Are breakdowns less common with boreholes serviced more frequently? Are annual service costs related to frequency of borehole repair? A linear regression was completed to determine if there was a relationship between the frequency of monitoring and the frequency of borehole service (see linear regression). 
 
+Correlation Between Variables:
+```python
+#Isolated Data
+simple_df = data.copy()
+simple_df = simple_df[[4, '6_women', '6_men', '6_persons-with-disabilities', 8, 9.2, 11, '12.a.3', '12.b.1', '12.b.2', 14, 15]]
 
-
-
-
-(it'd honestly be great to create a function that would do it all... but i'm really bad at functions)
+#Heatmap Visualization
+simple_corr = simple_df.corr(method='pearson')
+sns.heatmap(simple_corr);
+```
+![out-71](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-71.png)
 
 #### Concerns
-Readdressing some of those assumptions; worried that not true reflection of respondents due to the missing and assumed data
-Identifying that at this point I was very worried about the text part that was coming next
+To readdressing some of those assumptions, it is worrying that the data used is not a true reflection of respondents due to the missing and assumed data. The assumptions made were based on averages of other responses, based on the knowledge of how a participant answer another question, or my own interpretation of the written answers. At this point in understanding the data, there is also a concern regarding how to complete the text wrangling, visualization, and analysis. 
 
 ### Classification & Statistics
 #### Supervised Machine Learning
@@ -514,6 +519,109 @@ Conclusion - There is somewhat of a relationship between service frequency and m
 
 ### Text Data
 #### Cleaning & Wrangling
+random test
+![out-15](https://user-images.githubusercontent.com/92934572/144771211-7931d081-aab0-4cce-9185-585ed1b5528b.jpg)
+
+test part 2
+![out-15](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-15.jpg)
+
+Actual text for this section:
+Text cleaning, wrangling, and counting began by created another excel sheet with the "Challenges" presented in a different format. After having many difficulties separating the answers while residing in the same cell, I manually split the answers into Challenge 1-4 in a separate file, with only relevant information for my overall question regarding financial characteristics. While manually organizing the data, I also made additional assumptions regarding the language used to describe the challenges, and replaced similar answers to be written as the same phrase. This would help with counting and viewing the responses. This process required loading in the new file and wrangling the previous data once more. 
+
+```python
+#Load Data
+challenges_df = pd.read_excel('E:/ISU/Graduate/Courses/F21/ABE 516X/ISU-UP_Challenges.xlsx')
+print('DataFrame Shape:', challenges_df.shape)
+challenges_df = challenges_df.drop(index=[8], columns=['Respondent'])
+challenges_df = challenges_df.reset_index(drop=True)
+
+#11 - O&M Cost
+challenges_df.iloc[0, 2] = 65000
+challenges_df.iloc[18, 2] = 75000
+challenges_df['O&M Cost'].fillna(challenges_df['O&M Cost'].mean())
+#12.a.3 - Donations
+challenges_df.iloc[1, 3] = 120000
+challenges_df.iloc[3, 3] = 90000
+challenges_df.iloc[4, 3] = 110000
+challenges_df.iloc[5, 3] = 75000
+challenges_df.iloc[6, 3] = 70000
+challenges_df.iloc[7, 3] = 105000
+challenges_df.iloc[9, 3] = 150000
+challenges_df.iloc[10, 3] = 105000
+challenges_df.iloc[11, 3] = 65000
+challenges_df.iloc[12, 3] = 125000
+challenges_df.iloc[13, 3] = 75000
+challenges_df.iloc[15, 3] = 75000
+for r in range (23):
+    if challenges_df.iloc[r, 3] == 'none':
+        challenges_df.iloc[r, 3] = 0
+
+#Remove capitalized letters
+wordcol = ['Training Frequency', 'User Fee', 'Collection Rate', 'Monitoring Rate', 'Service Rate', 'Challenge 1', 'Challenge 2', 'Challenge 3', 'Challenge 4']
+for c in wordcol:
+    #print(data[c].dtype)
+    challenges_df[c] = challenges_df[c].str.lower()
+
+#Adjust time to numerical values
+timecol = [0, 5, 6, 7]
+
+for r in range (23):
+    for c in timecol:
+        if challenges_df.iloc[r, c] == 'once a year' or challenges_df.iloc[r, c] == 'yearly' or challenges_df.iloc[r, c] == 'annually':
+            challenges_df.iloc[r, c] = 1
+        if challenges_df.iloc[r, c] == 'biannually':
+            challenges_df.iloc[r, c] = 2
+        if challenges_df.iloc[r, c] == '3 times per year' or challenges_df.iloc[r, c] == 'every 4 months':
+            challenges_df.iloc[r, c] = 3
+        if challenges_df.iloc[r, c] == '4 times per year' or challenges_df.iloc[r, c] == 'every 3 months':
+            challenges_df.iloc[r, c] = 4
+        if challenges_df.iloc[r, c] == '6 times per year' or challenges_df.iloc[r, c] == 'every 2 months':
+            challenges_df.iloc[r, c] = 6
+        if challenges_df.iloc[r, c] == 'monthly':
+            challenges_df.iloc[r, c] = 12
+        if challenges_df.iloc[r, c] == 'biweekly':
+            challenges_df.iloc[r, c] = 26
+        if challenges_df.iloc[r, c] == 'weekly':
+            challenges_df.iloc[r, c] = 52
+        if challenges_df.iloc[r, c] == 'daily':
+            challenges_df.iloc[r, c] = 365
+
+#Adjust User Fee
+data.iloc[1, 4] = '5000 per household per year'
+data.iloc[6, 4] = '5000 per household per year'
+
+for r in range(23):
+    if challenges_df.iloc[r, 4][-5:] == 'month':
+        challenges_df['User Fee'] = challenges_df['User Fee'].str.slice(0, 3)
+    else:
+        challenges_df['User Fee'] = challenges_df['User Fee'].str.slice(0, 4)
+
+#Convert from string to integer
+challenges_df[['Training Frequency', 'Households', 'O&M Cost', 'Donations', 'User Fee', 'Collection Rate', 'Monitoring Rate', 'Service Rate']] = challenges_df[['Training Frequency', 'Households', 'O&M Cost', 'Donations', 'User Fee', 'Collection Rate', 'Monitoring Rate', 'Service Rate']].apply(pd.to_numeric)
+challenges_df.dtypes
+
+#User Fee per Year
+for r in range(23):
+    if challenges_df.iloc[r, 4] <= 4999:
+        challenges_df.iloc[r, 4] = (challenges_df.iloc[r, 4]) * 12
+```
+
+The next step was to remove the stop words from the challenges, so that the more common words and phrases would not be influenced by superfluous words. Although there are several different ways to go about removing stop words, I had success in using the gensim package. 
+```python
+#Required package
+%pip install gensim
+import gensim
+from gensim.parsing.preprocessing import remove_stopwords
+
+#Removing Stop Words
+for r in range (23):
+    for c in range(8, 12):
+        challenges_df.iloc[r, c] = remove_stopwords(challenges_df.iloc[r, c])
+```
+
+Word counting was experimented with and prepped to 
+
+
 Go through this process
 outline some code and clarify more assumptions
 having to redo the excel thing again
@@ -556,6 +664,8 @@ define the principles
 general discussion of reproducibility
 explain how my process meets the principles
 explain how my process does not meet the principles
+(it'd honestly be great to create a function that would do it all... but i'm really bad at functions)
+
 
 ## Class Exercise
 walking classmates through partial wrangling and linear regression 
@@ -595,16 +705,11 @@ You can take a look at the `_config.yml` file in this repository to see how to t
 
 You can see this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to work with Markdown language for adding features into this website.  This includes how to add headers, organization (e.g., bullets or lists), tables, and images.  It also includes how to add code to a website.
 
-*Note that for images, you will need to place the image file in a place that it can be referenced and called.  I would suggest the github repo might be a good solution.  Often, I make an images folder and can call the raw images file.
 
 See example [here](https://github.com/pages-themes/slate/blob/master/index.md).  You can see the raw code also.
 
 #### Relative Links
 To create links to other pages, you can read this article:  https://github.blog/2016-12-05-relative-links-for-github-pages/.  Note that these pages should by default direct to the same local folder/directory the index file is.  In this case, my README.md file is my index. If the files are in a different folder, one should specifiy the path for that folder.
-
-### Notebooks
-
-You can use a website to host notebooks.  First, you'll want to get the "raw" url from Github where your notebook is stored.  Then, navigate to https://nbviewer.jupyter.org and paste that URL.  The result will be a new generated URL that hosts your notebook.  This can be a [link](https://nbviewer.jupyter.org/github/isu-abe/516x/blob/master/module2/bootcamp/notebooks/nocode/Module%20IIB%20-%20Python%20Basics%20-%20no%20code.ipynb) in your website.
 
 
 Here is an example of a fantastic project website:
