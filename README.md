@@ -992,9 +992,9 @@ plt.ylabel('Number of Respondents');
 Challenges, regardless of the water user fee or the collection rate, remain consistently an unwillingness of the water user to pay the fee. This is demonstrated by "disunity during fee collection" and "failure of community members to pay fees" being one of the highest counted challenges. Misunderstandings of the committee members is also a frequent challenge reported among respondents. Although more analysis was desired, the project and subsequent results was limited by data, knowledge, and time. 
 
 ### Implications
-what do the results mean for ISU-UP
-my suggestions on what they need to focus on
-further research that should be done
+Challenges are largely participatory in nature, with disunity in payment collection, disrespect of water user committee members and disunity or failure in cleaning the borehole. Another challenge is water users failing to pay or delaying their fee payment. A slight majority of responses claimed that at least half of the committee members were women. The committee position of ‘representative of persons with disabilities’ is incorporated in the committees, however very few have this position filled. 
+
+The next step in this project is further statistical analysis of the responses, determining correlation between needed repairs and the causes within the responses, the impact of those needed repairs on challenges, and the influence of training and committee demographics on success. This information can provide numerical justification for areas of program development. Based on the responses, it can be concluded that additional advocacy for women and persons with disabilities on committees is needed for representation. Many responses included participatory challenges, which is commonly across community-based water distribution schemes around the world, but is also an area that can be further investigated. The causes of this disunity in the community were not investigated and could be another point for future consideration. 
 
 ## FAIR Principles
 define the principles
@@ -1003,40 +1003,70 @@ explain how my process meets the principles
 explain how my process does not meet the principles
 (it'd honestly be great to create a function that would do it all... but i'm really bad at functions)
 
+## [Class Exercise](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/ISU-UP%202021%20WUC%20Project%20-%20Class%20Exercise.ipynb)
+The goal of the exercise is to review the data wrangling process for this data and to complete an OLS linear regression on two variables of choice.
+An abbreviated version of the guided code is below:
 
-## Class Exercise
-walking classmates through partial wrangling and linear regression 
-because this seemed the most useful to other projects
-show the code and example output from previously
+```python
+#Linear Regression (part 1)
+#Using linear regression analysis as the method to determine if there is a relationship
+#We are not asking if there are differences in points, just determining if there exists trends
+#Using Ordinary Least Squares because we are assuming homoscedasticity and no autocorrelation (all points independent with no delay)
+#Would use Generalized Least Squares (GLS) should heteroscedasticity or autocorrelation be true
 
-from Howe: 
-In each project, I'd like to see a homework assignment that the class can do/evaluate to learn more about your data.  This should be a reproducible notebook that allows them to learn one or more aspects of your data workflow.  It is also an opportunity to share your research with your colleagues.
+#Isolating the Data
+isolated_df = data.copy() #create a copy of the wrangled DataFrame; rename isolated_df according to desired variables
+isolated_df = isolated_df[[15, '12.b.2']] #choose the two variables that you wish to evaluate
+isolated_df = isolated_df.dropna() #drop with missing values, as they cannot be evaluated
+isolated_df = isolated_df.reset_index(drop=True) #reset the index after dropping values
 
-## Project Reflection
-what did I learn about my data
-what did I learn from doing the project
-how might i go about doing it differently
-what would i have done with more time
+isolated_df #check the DataFrame to verify chosen variables
 
+#Creating x and Y variables
+x_variable = isolated_df[15] #choose the column of your x-variable
+y_variable = isolated_df['12.b.2'] #choose the column of your y-variable
+
+#Scatter Plot
+plt.scatter(x_variable, y_variable)
+plt.title('Title of Scatter Plot')
+plt.xlabel('X Axis Label')
+plt.ylabel('Y Axis Label');
+```
+```python
+#Linear Regression (part 2)
+
+#Import Statistics Package
+import statsmodels.api as sm
+
+#Ordinary Least Squares Regression
+isolated_ols = sm.OLS(y_variable, x_variable)
+isolated_reg = isolated_ols.fit()
+
+#Parameters for Evaluation of the fit
+print('p-value:', isolated_reg.pvalues.loc[15]) #the p-values will use the length of the x-variable
+print('Parameters:', isolated_reg.params)
+print('R2:', isolated_reg.rsquared)
+print('Standard errors:', isolated_reg.bse)
+print('Predicted values:', isolated_reg.predict())
+print(isolated_reg.summary())
+
+#Visualizing the fit
+#establishing the confidence intervals
+isolated_pred = isolated_reg.get_prediction()
+iv_l = isolated_pred.summary_frame()['obs_ci_lower'] #lower confidence interval line
+iv_u = isolated_pred.summary_frame()['obs_ci_upper'] #upper confidence internal line
+#plotting the results
+fig, ax = plt.subplots(figsize=(8, 6)) #size of the graph
+ax.plot(x_variable, y_variable, 'o', label='Frequency') #scatter plot of points
+ax.plot(x_variable, isolated_reg.fittedvalues, 'g--.', label='OLS') #best fit line
+ax.plot(x_variable, iv_u, 'r--') #upper ci
+ax.plot(x_variable, iv_l, 'r--') #lower ci
+ax.legend(loc='best') #legend location
+ax.set_title('Graph Title')
+ax.set_xlabel('X Axis Label')
+ax.set_ylabel('Y Axis Label');
+```
 # End
-
-
-# Making the Website
-
-This instruction is specific to the slate theme but should translate well to other themes.  You can change default variables in your website build by making changes in your `_config.yml` file:
-
-```yml
-title: [The title of your site]
-description: [A short description of your site's purpose]
-```
-
-Additionally, you may choose to set the following optional variables:
-
-```yml
-show_downloads: ["true" or "false" to indicate whether to provide a download URL]
-google_analytics: [Your Google Analytics tracking ID]
-```
-You can take a look at the `_config.yml` file in this repository to see how to type in the title and description.
 
 ### Markdown
 
@@ -1052,47 +1082,3 @@ To create links to other pages, you can read this article:  https://github.blog/
 Here is an example of a fantastic project website:
 
 https://stephenslab.github.io/ipynb-website/
-
-## Advanced Features
-
-### Stylesheet (Advanced)
-
-If you'd like to add your own custom styles:
-
-1. Create a file called `/assets/css/style.scss` in your site
-2. Add the following content to the top of the file, exactly as shown:
-    ```scss
-    ---
-    ---
-
-    @import "{{ site.theme }}";
-    ```
-3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
-
-*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
-
-### Layouts (Advanced)
-
-If you'd like to change the theme's HTML layout:
-
-1. [Copy the original template](https://github.com/pages-themes/slate/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
-2. Create a file called `/_layouts/default.html` in your site
-3. Paste the default layout content copied in the first step
-4. Customize the layout as you'd like
-
-### Overriding GitHub-generated URLs (Advanced)
-
-Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
-
-1. Look at [the template source](https://github.com/pages-themes/slate/blob/master/_layouts/default.html) to determine the name of the variable. It will be in the form of `{{ site.github.zip_url }}`.
-2. Specify the URL that you'd like the template to use in your site's `_config.yml`. For example, if the variable was `site.github.url`, you'd add the following:
-    ```yml
-    github:
-      zip_url: http://example.com/download.zip
-      another_url: another value
-    ```
-3. When your site is built, Jekyll will use the URL you specified, rather than the default one provided by GitHub.
-
-*Note: You must remove the `site.` prefix, and each variable name (after the `github.`) should be indent with two space below `github:`.*
-
-For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
