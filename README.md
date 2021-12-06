@@ -484,6 +484,7 @@ plt.xlabel('Freqeuncy of Monitoring')
 plt.ylabel('Frequency of Service');
 ```
 ![out-60](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-60.png)
+![out-60](https://user-images.githubusercontent.com/92934572/144868211-7c9a86e8-f2b2-45cc-8ebe-f9ca9a4a1df6.png)
 
 ```python
 #Linear Regression
@@ -513,19 +514,14 @@ ax.set_xlabel('Frequency of Monitoring')
 ax.set_ylabel('Frequency of Service')
 ```
 ![out-61a](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-61a.png)
+![out-61a](https://user-images.githubusercontent.com/92934572/144867919-c7e8d19d-03df-4c3d-9f2f-0c5464a7a973.png)
 ![out-61b](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-61b.png)
+![out-61b](https://user-images.githubusercontent.com/92934572/144868094-f6a693b3-6ad9-494d-bf9c-09acdbbf49af.png)
 
 Conclusion - There is somewhat of a relationship between service frequency and monitoring frequency. We see that the R^2 value is about 0.6, but there are only 19 observations and several overlapping points. There are several WUCs that monitor at about the same rate of service (which makes sense to save time and human effort). There is still a general conclusion that can be drawn where there is a greater monitoring frequency, there is a likelihood of increased service frequency. Because of this method's greater relevance beyond the project, this activity was created as my class exercise as well. 
 
 ### Text Data
 #### Cleaning & Wrangling
-random test
-![out-15](https://user-images.githubusercontent.com/92934572/144771211-7931d081-aab0-4cce-9185-585ed1b5528b.jpg)
-
-test part 2
-![out-15](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-15.jpg)
-
-Actual text for this section:
 Text cleaning, wrangling, and counting began by created another excel sheet with the "Challenges" presented in a different format. After having many difficulties separating the answers while residing in the same cell, I manually split the answers into Challenge 1-4 in a separate file, with only relevant information for my overall question regarding financial characteristics. While manually organizing the data, I also made additional assumptions regarding the language used to describe the challenges, and replaced similar answers to be written as the same phrase. This would help with counting and viewing the responses. This process required loading in the new file and wrangling the previous data once more. 
 
 ```python
@@ -625,7 +621,6 @@ from collections import Counter
 count1 = Counter(challenges_df['Challenge 1']).most_common()
 ```
 ![out-76](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-76.jpg)
-
 ![out-76](https://user-images.githubusercontent.com/92934572/144773558-661b4c50-1ef1-4543-a76b-c90f13ab496b.jpg)
 
 
@@ -647,7 +642,6 @@ plt.axis('off')
 plt.show()
 ```
 ![out-83](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-83.jpg)
-
 ![out-83](https://user-images.githubusercontent.com/92934572/144772407-9f1c9c1a-e24b-44f6-b14a-f9bc0bc9867c.jpg)
 
 The previous word cloud only shows the common words for the responses within the "Challenge 1" column. When converted to lists, the challenges across columns can be combined and then counted for both word clouds and other graphical information. 
@@ -665,6 +659,7 @@ plt.imshow(wordcloud, interpolation='spline36')
 plt.axis('off');
 ```
 ![out-87](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-87.jpg)
+![out-87](https://user-images.githubusercontent.com/92934572/144867788-187b8baf-9d14-4f62-84d3-45762d3f94ef.jpg)
 
 ```python
 #Creating Counted list and DataFrame
@@ -681,6 +676,7 @@ plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
 ![out-89](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-89.jpg)
+![out-89](https://user-images.githubusercontent.com/92934572/144867755-4e5592a7-c47d-42cb-9f3d-a385d34803d4.jpg)
 
 #### Determining Relationships
 To determine the relationship between financial characteristics and identified challenges, the water user fee and the water user fee collection rate were isolated and then evaluated according to most common challenge. An example of the 6000 UGX water user fee is shown below. For full results, see notebook. For additional, partial results, see the Results section. 
@@ -708,6 +704,8 @@ plt.imshow(wordcloud, interpolation='spline36')
 plt.axis('off');
 ```
 ![out-96](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-96.jpg)
+![out-96](https://user-images.githubusercontent.com/92934572/144867704-debac1ba-ea5b-4d53-928c-0061227505c8.jpg)
+
 ```python
 #Creating Counted list and DataFrame - User Fee 6000
 fee6_list = Counter(combined_fee6).most_common()
@@ -723,6 +721,8 @@ plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
 ![out-98](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-98.jpg)
+![out-98](https://user-images.githubusercontent.com/92934572/144867675-c35e35ce-cd96-45d1-a7a2-ac5ed6ed3ec0.jpg)
+
 
 #### Concerns & Reflection
 This is difficult to reproduce because of the way I collected data, and also because of how I managed to put it into excel and python. Thw excel file would have to be reoganized again to better fit the needs of analysis. My original intention was to perform a text classification, however, I got lost in the tokenization and reverted back to a counting method for observing the text information. Once again, the assumptions made in the process of reorganizing and evaluating the data has the potential to lose the true intention of the participants' responses. Although this method did not result in the intended depth of analysis, the pieces of information used were carefully chosen to still obtain an answer to the original project question, to learn new documentation, and to achieve the project goal. 
@@ -748,6 +748,7 @@ tcl_df = tcl_df.reset_index(drop=True)
 tcl_df
 ```
 ![out-88](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-88.jpg)
+![out-88](https://user-images.githubusercontent.com/92934572/144867644-ca3764f5-fda2-4f7c-b190-c3e2c9a05431.jpg)
 
 These results can be broken down into two categories:
 - unwillingness of water users to pay fees
@@ -780,6 +781,8 @@ plt.imshow(wordcloud, interpolation='spline36')
 plt.axis('off');
 ```
 ![out-93](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-93.jpg)
+![out-93](https://user-images.githubusercontent.com/92934572/144867606-8380757c-b0e3-4292-8da3-2bc831903ca5.jpg)
+
 ```python
 #Creating Counted list and DataFrame - User Fee 5000
 fee5_list = Counter(combined_fee5).most_common()
@@ -790,6 +793,8 @@ fee5_df = fee5_df.reset_index(drop=True)
 fee5_df
 ```
 ![out-94](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-94.jpg)
+![out-94](https://user-images.githubusercontent.com/92934572/144867586-90ec2f9e-c20d-497b-ba0e-4cdf147c539d.jpg)
+
 ```python
 #Bar Graph of Common Challenges - 5000 User Fee
 fee5_df.plot(kind='bar', color='darkseagreen')
@@ -798,6 +803,8 @@ plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
 ![out-95](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-95.jpg)
+![out-95](https://user-images.githubusercontent.com/92934572/144867571-b9a94bb0-5241-4cf6-ba9c-829e0cb94f0c.jpg)
+
 
 Note: Most common challenge for respondents with 5000 UGX as the water user fee is failure of the community member to pay their fees, the next being disunity during fee collection
 
@@ -826,6 +833,8 @@ plt.imshow(wordcloud, interpolation='spline36')
 plt.axis('off');
 ```
 ![out-96](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-96.jpg)
+![out-96](https://user-images.githubusercontent.com/92934572/144867545-0e2e05a7-7f82-4e0a-962e-f98056ee7ced.jpg)
+
 ```python
 #Creating Counted list and DataFrame - User Fee 6000
 fee6_list = Counter(combined_fee6).most_common()
@@ -836,6 +845,8 @@ fee6_df = fee6_df.reset_index(drop=True)
 fee6_df
 ```
 ![out-97](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-97.jpg)
+![out-97](https://user-images.githubusercontent.com/92934572/144867511-7253db3d-c040-4f4b-9d04-56296e4077ad.jpg)
+
 ```python
 #Bar Graph of Common Challenges - user Fee 6000
 fee6_df.plot(kind='bar', color='darkseagreen')
@@ -844,6 +855,8 @@ plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
 ![out-98](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-98.jpg)
+![out-98](https://user-images.githubusercontent.com/92934572/144867496-a87ea684-0413-4871-a822-7bf46e0f5d0b.jpg)
+
         
 Note: Most common challenge for respondents with 6000 UGX as the water user fee is failure of the community member to pay their fees, disunity during fee collection, and misunderstandings of or between committee members. I think because there are more Respondents reporting a 6000 UGX annual water user fee, that there are simply more responses for challenges.
 
@@ -932,11 +945,15 @@ plt.imshow(wordcloud52, interpolation='spline36')
 plt.axis('off');
 ```
 ![out-101](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-101.jpg)
+![out-101](https://user-images.githubusercontent.com/92934572/144867447-5a6c1ecd-f9e3-4396-9ca4-832423a518c4.jpg)
+
 ```python
 #Weekly Collection Rate Challenges
 rate52_df
 ```
 ![out-102](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-102.jpg)
+![out-102](https://user-images.githubusercontent.com/92934572/144867434-6a6d8965-4b98-4809-bf85-8206a91d2e35.jpg)
+
 ```python
 #Bar Graph of Common Challenges - Weekly
 rate52_df.plot(kind='bar', color='darkseagreen')
@@ -945,6 +962,7 @@ plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
 ![out-103](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-103.jpg)
+![out-103](https://user-images.githubusercontent.com/92934572/144867390-965a02a6-be1e-4541-9b2d-e5542a4bd2e5.jpg)
 
 ##### Monthly Collection Rate
 ```python
@@ -953,11 +971,15 @@ plt.imshow(wordcloud12, interpolation='spline36')
 plt.axis('off');
 ```
 ![out-104](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-104.jpg)
+![out-104](https://user-images.githubusercontent.com/92934572/144867376-d52a5273-8be7-4937-bce4-ff677e7796c6.jpg)
+
 ```python
 #Monthly Collection Rate Challenges
 rate12_df
 ```
 ![out-105](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-105.jpg)
+![out-105](https://user-images.githubusercontent.com/92934572/144867363-75787dbb-37e9-43e6-999e-1842e1956176.jpg)
+
 ```python
 #Bar Graph of Common Challenges - Monthly
 rate12_df.plot(kind='bar', color='darkseagreen')
@@ -966,6 +988,7 @@ plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
 ![out-106](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-106.jpg)
+![out-106](https://user-images.githubusercontent.com/92934572/144867237-f1603f79-6716-4ed4-8474-13f0a0215e4e.jpg)
 
 ##### Annual Collection Rate
 ```python
@@ -974,11 +997,15 @@ plt.imshow(wordcloud1, interpolation='spline36')
 plt.axis('off');
 ```
 ![out-107](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-107.jpg)
+![out-107](https://user-images.githubusercontent.com/92934572/144867223-def1cd48-b364-40dd-89fa-384cf960ab48.jpg)
+
 ```python
 #Annual Collection Rate Challenges
 rate1_df
 ```
 ![out=108](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-108.jpg)
+![out-108](https://user-images.githubusercontent.com/92934572/144867156-921167bf-4bf8-4249-98f9-24625c0f144c.jpg)
+
 ```python
 #Bar Graph of Common Challenges - Annual
 rate1_df.plot(kind='bar', color='darkseagreen')
@@ -987,6 +1014,7 @@ plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
 ![out-109](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-109.jpg)
+![out-109](https://user-images.githubusercontent.com/92934572/144867011-7ca36d18-dfe5-4366-b33a-cde90cc0af2d.jpg)
 
 ### Discussion
 Challenges, regardless of the water user fee or the collection rate, remain consistently an unwillingness of the water user to pay the fee. This is demonstrated by "disunity during fee collection" and "failure of community members to pay fees" being one of the highest counted challenges. Misunderstandings of the committee members is also a frequent challenge reported among respondents. Although more analysis was desired, the project and subsequent results was limited by data, knowledge, and time. 
@@ -997,11 +1025,7 @@ Challenges are largely participatory in nature, with disunity in payment collect
 The next step in this project is further statistical analysis of the responses, determining correlation between needed repairs and the causes within the responses, the impact of those needed repairs on challenges, and the influence of training and committee demographics on success. This information can provide numerical justification for areas of program development. Based on the responses, it can be concluded that additional advocacy for women and persons with disabilities on committees is needed for representation. Many responses included participatory challenges, which is commonly across community-based water distribution schemes around the world, but is also an area that can be further investigated. The causes of this disunity in the community were not investigated and could be another point for future consideration. 
 
 ## FAIR Principles
-define the principles
-general discussion of reproducibility
-explain how my process meets the principles
-explain how my process does not meet the principles
-(it'd honestly be great to create a function that would do it all... but i'm really bad at functions)
+The FAIR principles for scientific data are: findable, accessible, interoperable, and reusable. The data and analysis for this project is findable and accessible through github, where the allowable information is publicly available for others to observe and interact with. Due to how the data was organized and the continuous learning required to create usable information, I don't think my project meets the interoperable principle. The process is reusable, and the data is available for other analyses. For reproducibility, the assumptions about the raw data may vary from person to person, although I believe my assumptions to be more representative given my familiarity with the material. Other types of data can follow a similar process, but of course my code is tailored exclusively to the data. It would have been great to create some functions within the code to perform some of the longer, repeatable steps. This would have streamlined the information and potentially made is more useful. 
 
 ## [Class Exercise](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/ISU-UP%202021%20WUC%20Project%20-%20Class%20Exercise.ipynb)
 The goal of the exercise is to review the data wrangling process for this data and to complete an OLS linear regression on two variables of choice.
@@ -1066,19 +1090,3 @@ ax.set_title('Graph Title')
 ax.set_xlabel('X Axis Label')
 ax.set_ylabel('Y Axis Label');
 ```
-# End
-
-### Markdown
-
-You can see this [cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) to work with Markdown language for adding features into this website.  This includes how to add headers, organization (e.g., bullets or lists), tables, and images.  It also includes how to add code to a website.
-
-
-See example [here](https://github.com/pages-themes/slate/blob/master/index.md).  You can see the raw code also.
-
-#### Relative Links
-To create links to other pages, you can read this article:  https://github.blog/2016-12-05-relative-links-for-github-pages/.  Note that these pages should by default direct to the same local folder/directory the index file is.  In this case, my README.md file is my index. If the files are in a different folder, one should specifiy the path for that folder.
-
-
-Here is an example of a fantastic project website:
-
-https://stephenslab.github.io/ipynb-website/
