@@ -24,7 +24,8 @@ The [Iowa State University - Uganda Program (ISU-UP)](https://www.globe.iastate.
 
 ISU-UP has six key programs to support the community: Agronomy & Postharvest, Community Nutrition, Education, Livestock, Entrepreneurship, and WASH. Each program has a series of projects that are dedicated to serving the community. The [WASH](https://www.csrl.cals.iastate.edu/water-sanitation-and-hygiene) program at the CSRL seeks to provide access to sustainable and clean water to the people of the Kamuli district.
 
-![Uganda Map](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Uganda-map.png)       ![CSRL](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/CSRL_what-we-do.png)
+![Uganda-map](https://user-images.githubusercontent.com/92934572/144869355-9bf5e58d-1892-41f0-930a-5decfc8df938.png)
+![CSRL_what-we-do](https://user-images.githubusercontent.com/92934572/144869371-8c5e6700-363c-4150-a25a-c83952454a1d.png)
 
 Water Access, Sanitation, and Hygiene programs seek to assist community in obtaining this access to safe drinking water. There are six areas in which WASH operates: make water safe to drink and use, improve hygiene and sanitation, respond to complex internaitonal emergencies and outbreaks, control and eliminate disease, identify adn characterize disease, adn lastly educate and train aboutt WASH. 
 
@@ -32,7 +33,7 @@ To accomplish this mission, ISU-UP has drilled boreholes in the surrounding regi
 
 This original research and the reimagined results assist ISU-UP in determining the needs of the community and provide clear evidence for future improvements to the WASH program, and by extension, improving the lives of the surrounding community. 
 
-![Children at borehole](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Borehole-children.png)   ![Water User at borehole](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Borehole-water-user.png) ![ISU-UP Staff at borehole](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Borehole-isu-up.png)
+![Borehole-children](https://user-images.githubusercontent.com/92934572/144869420-5e3e210e-5d6d-4093-9dc8-052409b09081.png)![Borehole-water-user](https://user-images.githubusercontent.com/92934572/144869432-aea19883-7da4-4b46-a02e-be010ebb3fe0.png)![Borehole-isu-up](https://user-images.githubusercontent.com/92934572/144869445-ec76765e-814a-472c-a62d-241522c3dbc5.png)
 
 ## Data
 ### Collection Method
@@ -43,7 +44,7 @@ According to the FAO Questionnaire Design guide for formal, standardized surveys
 
 Parameters, topics, and key questions were outlined into key sections of the survey and then built into questions. In reviewing the questionnaire, questions and jargon were altered to accommodate for the community. Formatting was arranged according to suggestions by Rutgers’s survey preparation guidelines. The final version was reviewed by and sent to the WASH director to then be used for data collection.
 
-![Survey Sections & Example Questions](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/Survey-questions.png)
+![Survey-questions](https://user-images.githubusercontent.com/92934572/144869497-09b7f640-55ae-4109-83a0-6515e8eb1e5f.png)
 
 #### Interviews
 Data was intended to be collected from one to three water user committee members from each committee. However, due to travel distance, some water user committees were excluded. An ISU-UP staff member administered the survey via an in-person interview and transcribed the responses. An IRB was not required to purpose given the information is for internal program use only and not publication. Identifiers were included in the surveys to have the ability to ask follow-up questions of specific members. Water user committee identifiers were originally to be included in the survey to analyze the data and provide summaries of each committee. Instead, this piece of information was lacking and therefore acknowledged in the response assessment. 
@@ -51,7 +52,7 @@ Data was intended to be collected from one to three water user committee members
 ### What was aquired?
 The responses to the questionnaire were handwritten and each survey was scanned and returned to me in individual pdf files. In my original review attempts, I tranferred the answers to each question, as written, to an excel sheet for each response. Through this process, I could already see missing or obscured information, where respondents neglected to answer some questions, survey pages were missing, or the interpretation of the question was different than intended. Some questions were written to review brief, numerical answers. Some questions were written as multiple choice, where the respondents could select yes/no or a/b, etc. Many of the remaining questions were short answer/free response where the intervieww described the conditions of the WUC or the borehole. 
 
-![Example Survey Answers](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/survey-answers.png)
+![survey-answers](https://user-images.githubusercontent.com/92934572/144869523-794856a7-f435-45bd-b99d-6070d122b4dc.png)
 
 Several of the initial questions asked of interviewees were not relevant to my particular analysis, rather they were intended to provide easy questions to allows the respondent to transition into the questionnaire. The final question, "Additional commentary" was similarly created to provide a transition out of the survey, and was not used for analysis. However, responses to the final question could be applied to other areas of improvement for the program. 
 
@@ -69,7 +70,7 @@ Much of the collection method was beyond my control and I had limited insight in
 ### Workflow
 To obtain results which answer the project question, the data followed a workflow of pre-processing, data processesing, and conclusions from results. Some of the original workflow intentions were not achieved due to time or data limitations. The analysis process was chosen based on the data needs. Pre-processing in excel was essential to create raw data that was usable for jupyter notebook. The data processing included much data wrangling and text cleaning that organize the data once more into data that could be visualized or analyzed. The data visualization were important to graphically observe the responses and most of which ended in a form originally requested by ISU-UP. The conclusions were formed by statistical assessments (linear regression) or by visual comparisons of the obtained results. 
 
-![Project Workflow](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/workflow.png)
+![workflow](https://user-images.githubusercontent.com/92934572/144869556-5dc7710a-01d3-4c95-9306-6a3ed45ab1a1.png)
 
 #### Tools used
 The following are key class concepts that were integrated into the project:
@@ -85,12 +86,12 @@ The following are key class concepts that were integrated into the project:
 #### Excel Stuff
 As previously mentioned, the original excel file was sufficient for the time, but not for any further analysis. Each participant's survey was initially within an individual excel sheet as the raw data. The summarized data included an excel sheet for the different types of responses. The text responses to challenges, repairs, and successes were thoroughly examined before I identified key terms, categorized information, and then counted response number. 
 
-![Original Excel](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/raw-original.png)
-![Excel Responses](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/raw-answers.png)
+![raw-original](https://user-images.githubusercontent.com/92934572/144869588-3933ec12-e028-4b79-a0aa-ff2edd9dcdd7.png)
+![raw-answers](https://user-images.githubusercontent.com/92934572/144869599-ae8ad6f1-6e77-4558-8014-0f15f0c91071.png)
 
 For use of python in jupyter notebook, all the responses were moved into a table, with some verification needed from the origianl participant's file. The index because respondent number and the columns became the question number. Responses were input as close to the original answer as possible, but with ammendments that allowed the data to be more consistent across responses (e.g. 5000 versus 5000 per house versus 5000 annually versus 5000 per household per year). Again, assumptions regarding responses that were illegible were assumed. 
 
-![Adjusted Excel Data](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/data-usable.png)
+![data-usable](https://user-images.githubusercontent.com/92934572/144869651-6a18683c-c66f-4017-9da3-d456c4086bcd.png)
 
 #### Data Wrangling
 Data wrangling was used to transform the raw data into information where visualizations and comparisions can be made. This required removing blank rows and irrelevant columns, filling in missing values with assumptions, cleaning capitalization, substituting ranges for singular numbers, and adjusting written time measurements as numerical values. These needs were determined after observing: shapes, types, null values, unique columns and answers, and describing the data. 
@@ -123,7 +124,7 @@ print('Service Freq', raw_df[15].unique())
 print('Repair', raw_df[19].unique())
 print('Documentation', raw_df[20.1].unique())
 ```
-![Out-10](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-10.png)
+![out-10](https://user-images.githubusercontent.com/92934572/144869687-b0fe9c2b-4b5a-4bc7-9044-254709459d22.png)
 
 This output showed me the different answers for monitoring (yes, a, b, c, or some combination) that reflected if and how committees monitored the borehole. This output informs that the different combination of answers can be evaluated, but would need to be organized differently beforehand (put into a different dataframe separating out the answers). This also shows the different options for monitoring frequency. Each response can be transformed into number of days or times per year for more straightforward assessments. Nan values are also present among these answers, and are an indication that they either need to be removed or filled with an assumption. Other views of these answers revealed the same answer but under different capitalization conventions, which would need to be altered for consistency later. It also showed some rates where the vocabulary was different but the answer the same (e.g. three times per year versus every four months). Data wrangling allowed for consistency as demonstrated below. 
 
@@ -191,7 +192,7 @@ Addressing capitalization:
 ```python
 print(data[7.1].unique())
 ```
-![Out-15](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-15.png)
+![out-15](https://user-images.githubusercontent.com/92934572/144869732-299c7908-a0b3-42b3-8e25-b066add885a3.jpg)
 
 ```python
 wordcol = [1, 2, 3, 5, 7.1, 7.2, 9.1, 10.1, 12, '12.a.4', '12.b.1', '12.b.2', '12.b.3', '12.b.4', '12.b.5', 13, 14, 15, 16, 17, 18, 19, 21, 22, 23]
@@ -201,7 +202,7 @@ for c in wordcol:
 print(data[7.1].unique())
 print(data['12.a.4'].unique())
 ```
-![Out-16](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-16.png)
+![out-16](https://user-images.githubusercontent.com/92934572/144869833-9cdfa2a8-2072-47c4-a9b0-2f2c51717def.png)
 
 Adjusting time inconsistencies and transforming to numerical values:
 ```python
@@ -262,7 +263,7 @@ for r in range(23):
         data.iloc[r, 20] = (data.iloc[r, 20]) * 12
 ```
 At this point, the data is in a more manageable, consistent, usable form
-![data-head](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/data-head.png)
+![data-head](https://user-images.githubusercontent.com/92934572/144869768-6dc8ddaf-9283-4009-9c3a-9c6b7ac0cfcc.png)
 
 #### Data Visualization
 Now that (most of) the data is manageable, it can be graphed in different ways to derive conclusions. This step was done by hand in excel in the previous review attempt, which lead to sufficient, but unclear and not reproducible results. 
@@ -288,7 +289,7 @@ data_dem
 sns.set_theme(palette='terrain', style='ticks')
 sns.boxplot(data=data_dem).set(xlabel='WUC Demographic Composition', ylabel='Number of Persons');
 ```
-![Out-25](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-25.png)
+![out-25](https://user-images.githubusercontent.com/92934572/144869864-1a714a3e-e448-45ad-8887-cef65829c2c0.png)
 
 ```python
 #Pie Chart of 50% women
@@ -305,7 +306,7 @@ gender_count = pd.value_counts(data_dem['Req Met'], sort=True)
 gender_count.plot(kind='pie', autopct='%1.0f%%', colors=['darkseagreen', 'cadetblue'])
 plt.title('Water User Committee Demographics (50%+ women) based on Response');
 ```
-![Out-29](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-29.png)
+![out-29](https://user-images.githubusercontent.com/92934572/144869886-a8a33168-7b98-4280-9758-b0ec0bec8d8e.png)
 
 Conclusion - Most of the water user committees that the respondents represent have sufficient gender ratio. However, with nearly half of the respondents reporting their committees lacking the proper gender ratio, the negligence of meeting the requirement should be addressed. It would be interesting to ask: for what reason(s) are women not sufficiently represented on the water user committee? This might turn out answers relating to those volunteering or stereotypes against women. 
 
@@ -318,7 +319,7 @@ plt.title('Respondent WUC Position')
 plt.xlabel('Position')
 plt.ylabel('Number of Respondents');
 ```
-![out-32](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-32.png)
+![out-32](https://user-images.githubusercontent.com/92934572/144869908-20aae6c1-a8ea-460b-8ece-3d114327419d.png)
 
 Conclusion - Most of the interviewees were chairperson of their respective WUC. My assumption is that they are sufficiently aware of most operations within the committee and are able to provide reliable answers. The treasurers are most likely more aware and knowledgable of the financial characteristics and the guards of monitoring and operation/maintenance needs. It would be interesting to know if the respondent position was related to the types of challenges reported (not observed in this project). 
 
@@ -328,7 +329,7 @@ meet_f = pd.value_counts(data[8])
 meet_f.plot(kind='pie', autopct='%1.0f%%')
 plt.title('WUC Meeting Frequency');
 ```
-![out-35](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-35.png)
+![out-35](https://user-images.githubusercontent.com/92934572/144869933-805c7c61-327c-40af-9b0e-335e4a0b98fc.png)
 
 Household Overview:
 ```python
@@ -336,7 +337,7 @@ Household Overview:
 users = data[9.2]
 sns.boxplot(x=users, palette='ocean').set(xlabel='Number of Households');
 ```
-![out-36](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-36.png)
+![out-36](https://user-images.githubusercontent.com/92934572/144869954-e3402cc5-aade-4d11-8ad5-af136eb2ae76.png)
 
 ```python
 #Bar Graph (exposes missing data, shows variation)
@@ -346,7 +347,7 @@ plt.title('Number of Households per Borehole')
 plt.xlabel('Respondent')
 plt.ylabel('Number of Households');
 ```
-![out-37](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-37.png)
+![out-37](https://user-images.githubusercontent.com/92934572/144870307-5c4f4239-98aa-482e-b5be-9e34e15df89b.png)
 
 Conclusion - These graphs express the range of number of households retrieving water from the respondent's borehole. It would be interesting to analyze if there is a relationship between the number of households and the types of challenges. For example, do more households have more challenges with sanitation and hygiene? Are boreholes with fewer households stressed financially and service frequency (partially investigated)?
 
@@ -357,7 +358,7 @@ bank_count.plot(kind='bar', color=['seagreen', 'dodgerblue'])
 plt.title('Number of Respondents with Banking System')
 plt.ylabel('Number of Respondents');
 ```
-![out-38](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-38.png)
+![out-38](https://user-images.githubusercontent.com/92934572/144870331-462b5354-c0f9-410b-89dd-15d78890465f.png)
 
 Conclusion - most water user committees do not have a banking system. However, I do not believe this question was well worded or understood by the respondents, and thus the results are not reflective of true occurances. It would be interesting to know if the treasurers are the participants responding yes, and it would also be interesting to have more insight into committees' finance documentation. 
 
@@ -368,7 +369,7 @@ fees_count = pd.value_counts(data['12.b.1'])
 fees_count.plot(kind='pie', autopct='%1.0f%%', colors=['cornflowerblue', 'yellowgreen'])
 plt.title('Water User Collection Fees (USH) by Number of Respondents');
 ```
-![out-44](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-44.png)
+![out-44](https://user-images.githubusercontent.com/92934572/144870361-a93c6efe-e82f-47ea-9096-d9917ab9f7e0.png)
 
 ```python
 #Collection Rate
@@ -379,7 +380,7 @@ plt.title('Water User Fee Collection Rate (collection times per year)')
 plt.xlabel('Collections per Year')
 plt.ylabel('Number of Respondents');
 ```
-![out-45](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-45.png)
+![out-45](https://user-images.githubusercontent.com/92934572/144870381-9e8572b4-2c86-4b69-9274-c15b3e246d28.png)
 
 Conclusions - Most water user committees have set a 6000 UGX per household per rate water user fee rate. Just over half of the respondents reported collecting fees annually and just under half reported collecting fees monthly. One respondent claimed fees were collected weekly. It's then interesting to investigate if varying fee collection rates contributed to willingness to pay (investigated) and if fees or collection rates provided different stressors on households. It would be interesting to know how many individuals are in each household, because this can range from 1 to 10 individuals depending on marriage and number of children. 
 
@@ -389,7 +390,7 @@ service_f = pd.value_counts(data[15])
 service_f.plot(kind='pie', autopct='%1.0f%%', colors=['cornflowerblue', 'seagreen', 'yellowgreen'])
 plt.title('Percentage of Respondents According to Frequence of Borehole Service');
 ```
-![out-59](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-59.png)
+![out-59](https://user-images.githubusercontent.com/92934572/144870395-35c1ab9f-5126-462a-b655-0ef10d27714a.png)
 
 Conclusion - Most respondents service the borehole monthly. Questions that could be derived from this result are: are more repairs required for boreholes serviced less frequently? Are breakdowns less common with boreholes serviced more frequently? Are annual service costs related to frequency of borehole repair? A linear regression was completed to determine if there was a relationship between the frequency of monitoring and the frequency of borehole service (see linear regression). 
 
@@ -403,7 +404,7 @@ simple_df = simple_df[[4, '6_women', '6_men', '6_persons-with-disabilities', 8, 
 simple_corr = simple_df.corr(method='pearson')
 sns.heatmap(simple_corr);
 ```
-![out-71](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-71.png)
+![out-71](https://user-images.githubusercontent.com/92934572/144870434-a221cce2-0776-41ea-9e48-1fd092cef934.png)
 
 #### Concerns & Reflection
 To readdressing some of those assumptions, it is worrying that the data used is not a true reflection of respondents due to the missing and assumed data. The assumptions made were based on averages of other responses, based on the knowledge of how a participant answer another question, or my own interpretation of the written answers. At this point in understanding the data, there is also a concern regarding how to complete the text wrangling, visualization, and analysis. 
@@ -466,7 +467,7 @@ plt.title('Heatmap of Naive Bayes Classification, Gender Ratio')
 plt.xlabel('True')
 plt.ylabel('Predicted');
 ```
-![Out-31](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-31.png)
+![out-31](https://user-images.githubusercontent.com/92934572/144870461-80634252-41cc-4128-9d5c-f5130eb9ea5e.png)
 
 #### Linear Regression
 In wanting to create a way to determine the relationship between different pieces of information, I used an ordinary least squares linear regression, with an outline that is reproducible for other (numerical) answers. 
@@ -483,7 +484,6 @@ plt.scatter(x_var, y_var)
 plt.xlabel('Freqeuncy of Monitoring')
 plt.ylabel('Frequency of Service');
 ```
-![out-60](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-60.png)
 ![out-60](https://user-images.githubusercontent.com/92934572/144868211-7c9a86e8-f2b2-45cc-8ebe-f9ca9a4a1df6.png)
 
 ```python
@@ -513,9 +513,7 @@ ax.legend(loc='best')
 ax.set_xlabel('Frequency of Monitoring')
 ax.set_ylabel('Frequency of Service')
 ```
-![out-61a](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-61a.png)
 ![out-61a](https://user-images.githubusercontent.com/92934572/144867919-c7e8d19d-03df-4c3d-9f2f-0c5464a7a973.png)
-![out-61b](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-61b.png)
 ![out-61b](https://user-images.githubusercontent.com/92934572/144868094-f6a693b3-6ad9-494d-bf9c-09acdbbf49af.png)
 
 Conclusion - There is somewhat of a relationship between service frequency and monitoring frequency. We see that the R^2 value is about 0.6, but there are only 19 observations and several overlapping points. There are several WUCs that monitor at about the same rate of service (which makes sense to save time and human effort). There is still a general conclusion that can be drawn where there is a greater monitoring frequency, there is a likelihood of increased service frequency. Because of this method's greater relevance beyond the project, this activity was created as my class exercise as well. 
@@ -620,9 +618,7 @@ Word counting was experimented with and prepped to then complete vizualization a
 from collections import Counter
 count1 = Counter(challenges_df['Challenge 1']).most_common()
 ```
-![out-76](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-76.jpg)
 ![out-76](https://user-images.githubusercontent.com/92934572/144773558-661b4c50-1ef1-4543-a76b-c90f13ab496b.jpg)
-
 
 #### Visualization
 Word clouds are a way to visually (more artistically) show text information regarding word frequency. As the word increases in count, and therefore commonality, the font size increases. When viewing word clouds, one is able to see the most frequently used words in a string of text. This is an engaging way to quickly learn about the challenges faced by water user committees as reported by survey participants. 
@@ -641,7 +637,6 @@ plt.imshow(wordcloud)
 plt.axis('off')
 plt.show()
 ```
-![out-83](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-83.jpg)
 ![out-83](https://user-images.githubusercontent.com/92934572/144772407-9f1c9c1a-e24b-44f6-b14a-f9bc0bc9867c.jpg)
 
 The previous word cloud only shows the common words for the responses within the "Challenge 1" column. When converted to lists, the challenges across columns can be combined and then counted for both word clouds and other graphical information. 
@@ -658,7 +653,6 @@ wordcloud = WordCloud(stopwords=stopwords3, background_color='mintcream').genera
 plt.imshow(wordcloud, interpolation='spline36')
 plt.axis('off');
 ```
-![out-87](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-87.jpg)
 ![out-87](https://user-images.githubusercontent.com/92934572/144867788-187b8baf-9d14-4f62-84d3-45762d3f94ef.jpg)
 
 ```python
@@ -675,7 +669,6 @@ plt.title('Number of Respondents Identifying Key Challenge')
 plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
-![out-89](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-89.jpg)
 ![out-89](https://user-images.githubusercontent.com/92934572/144867755-4e5592a7-c47d-42cb-9f3d-a385d34803d4.jpg)
 
 #### Determining Relationships
@@ -703,7 +696,6 @@ wordcloud = WordCloud(stopwords=stopwords6, background_color='mintcream').genera
 plt.imshow(wordcloud, interpolation='spline36')
 plt.axis('off');
 ```
-![out-96](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-96.jpg)
 ![out-96](https://user-images.githubusercontent.com/92934572/144867704-debac1ba-ea5b-4d53-928c-0061227505c8.jpg)
 
 ```python
@@ -720,9 +712,7 @@ plt.title('Number of Respondents Identifying Key Challenges for 6000 UGX Fee')
 plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
-![out-98](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-98.jpg)
 ![out-98](https://user-images.githubusercontent.com/92934572/144867675-c35e35ce-cd96-45d1-a7a2-ac5ed6ed3ec0.jpg)
-
 
 #### Concerns & Reflection
 This is difficult to reproduce because of the way I collected data, and also because of how I managed to put it into excel and python. Thw excel file would have to be reoganized again to better fit the needs of analysis. My original intention was to perform a text classification, however, I got lost in the tokenization and reverted back to a counting method for observing the text information. Once again, the assumptions made in the process of reorganizing and evaluating the data has the potential to lose the true intention of the participants' responses. Although this method did not result in the intended depth of analysis, the pieces of information used were carefully chosen to still obtain an answer to the original project question, to learn new documentation, and to achieve the project goal. 
@@ -747,7 +737,6 @@ tcl_df = tcl_df.drop(index=0)
 tcl_df = tcl_df.reset_index(drop=True)
 tcl_df
 ```
-![out-88](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-88.jpg)
 ![out-88](https://user-images.githubusercontent.com/92934572/144867644-ca3764f5-fda2-4f7c-b190-c3e2c9a05431.jpg)
 
 These results can be broken down into two categories:
@@ -780,7 +769,6 @@ wordcloud = WordCloud(stopwords=stopwords5, background_color='mintcream').genera
 plt.imshow(wordcloud, interpolation='spline36')
 plt.axis('off');
 ```
-![out-93](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-93.jpg)
 ![out-93](https://user-images.githubusercontent.com/92934572/144867606-8380757c-b0e3-4292-8da3-2bc831903ca5.jpg)
 
 ```python
@@ -792,7 +780,6 @@ fee5_df = fee5_df.drop(index=0)
 fee5_df = fee5_df.reset_index(drop=True)
 fee5_df
 ```
-![out-94](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-94.jpg)
 ![out-94](https://user-images.githubusercontent.com/92934572/144867586-90ec2f9e-c20d-497b-ba0e-4cdf147c539d.jpg)
 
 ```python
@@ -802,9 +789,7 @@ plt.title('Number of Respondents Identifying Key Challenge for 5000 UGX Fee')
 plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
-![out-95](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-95.jpg)
 ![out-95](https://user-images.githubusercontent.com/92934572/144867571-b9a94bb0-5241-4cf6-ba9c-829e0cb94f0c.jpg)
-
 
 Note: Most common challenge for respondents with 5000 UGX as the water user fee is failure of the community member to pay their fees, the next being disunity during fee collection
 
@@ -832,7 +817,6 @@ wordcloud = WordCloud(stopwords=stopwords6, background_color='mintcream').genera
 plt.imshow(wordcloud, interpolation='spline36')
 plt.axis('off');
 ```
-![out-96](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-96.jpg)
 ![out-96](https://user-images.githubusercontent.com/92934572/144867545-0e2e05a7-7f82-4e0a-962e-f98056ee7ced.jpg)
 
 ```python
@@ -844,7 +828,6 @@ fee6_df = fee6_df.drop(index=0)
 fee6_df = fee6_df.reset_index(drop=True)
 fee6_df
 ```
-![out-97](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-97.jpg)
 ![out-97](https://user-images.githubusercontent.com/92934572/144867511-7253db3d-c040-4f4b-9d04-56296e4077ad.jpg)
 
 ```python
@@ -854,10 +837,8 @@ plt.title('Number of Respondents Identifying Key Challenges for 6000 UGX Fee')
 plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
-![out-98](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-98.jpg)
 ![out-98](https://user-images.githubusercontent.com/92934572/144867496-a87ea684-0413-4871-a822-7bf46e0f5d0b.jpg)
 
-        
 Note: Most common challenge for respondents with 6000 UGX as the water user fee is failure of the community member to pay their fees, disunity during fee collection, and misunderstandings of or between committee members. I think because there are more Respondents reporting a 6000 UGX annual water user fee, that there are simply more responses for challenges.
 
 #### Different Water User Fee Collection Rate
@@ -944,14 +925,12 @@ rate1_df = rate1_df.reset_index(drop=True)
 plt.imshow(wordcloud52, interpolation='spline36')
 plt.axis('off');
 ```
-![out-101](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-101.jpg)
 ![out-101](https://user-images.githubusercontent.com/92934572/144867447-5a6c1ecd-f9e3-4396-9ca4-832423a518c4.jpg)
 
 ```python
 #Weekly Collection Rate Challenges
 rate52_df
 ```
-![out-102](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-102.jpg)
 ![out-102](https://user-images.githubusercontent.com/92934572/144867434-6a6d8965-4b98-4809-bf85-8206a91d2e35.jpg)
 
 ```python
@@ -961,7 +940,6 @@ plt.title('Number of Respondents Identifying Key Challenges for Weekly Collectio
 plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
-![out-103](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-103.jpg)
 ![out-103](https://user-images.githubusercontent.com/92934572/144867390-965a02a6-be1e-4541-9b2d-e5542a4bd2e5.jpg)
 
 ##### Monthly Collection Rate
@@ -970,14 +948,12 @@ plt.ylabel('Number of Respondents');
 plt.imshow(wordcloud12, interpolation='spline36')
 plt.axis('off');
 ```
-![out-104](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-104.jpg)
 ![out-104](https://user-images.githubusercontent.com/92934572/144867376-d52a5273-8be7-4937-bce4-ff677e7796c6.jpg)
 
 ```python
 #Monthly Collection Rate Challenges
 rate12_df
 ```
-![out-105](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-105.jpg)
 ![out-105](https://user-images.githubusercontent.com/92934572/144867363-75787dbb-37e9-43e6-999e-1842e1956176.jpg)
 
 ```python
@@ -987,7 +963,6 @@ plt.title('Number of Respondents Identifying Key Challenge for Monthly Collectio
 plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
-![out-106](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-106.jpg)
 ![out-106](https://user-images.githubusercontent.com/92934572/144867237-f1603f79-6716-4ed4-8474-13f0a0215e4e.jpg)
 
 ##### Annual Collection Rate
@@ -996,14 +971,12 @@ plt.ylabel('Number of Respondents');
 plt.imshow(wordcloud1, interpolation='spline36')
 plt.axis('off');
 ```
-![out-107](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-107.jpg)
 ![out-107](https://user-images.githubusercontent.com/92934572/144867223-def1cd48-b364-40dd-89fa-384cf960ab48.jpg)
 
 ```python
 #Annual Collection Rate Challenges
 rate1_df
 ```
-![out=108](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-108.jpg)
 ![out-108](https://user-images.githubusercontent.com/92934572/144867156-921167bf-4bf8-4249-98f9-24625c0f144c.jpg)
 
 ```python
@@ -1013,7 +986,6 @@ plt.title('Number of Respondents Identifying Key Challenge for Annual Collection
 plt.xlabel('Challenge Type - see key')
 plt.ylabel('Number of Respondents');
 ```
-![out-109](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-109.jpg)
 ![out-109](https://user-images.githubusercontent.com/92934572/144867011-7ca36d18-dfe5-4366-b33a-cde90cc0af2d.jpg)
 
 ### Discussion
