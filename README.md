@@ -267,14 +267,14 @@ At this point, the data is in a more manageable, consistent, usable form
 #### Data Visualization
 Now that (most of) the data is manageable, it can be graphed in different ways to derive conclusions. This step was done by hand in excel in the previous review attempt, which lead to sufficient, but unclear and not reproducible results. 
 
-Steps for Descriptors & Visualization (reflection of the order of assessment):
-1) Numerical Values (overview)  
+Steps for Descriptors & Visualization (reflection of the order of assessment; selected results displayed, for full content see notebook):
+1) Numerical Values (overview)
 2) WUC Gender Composition (Gender Ratio)  
 3) Respondent Position  
-4) Training & Meeting Frequency  
+4) Training & Meeting Frequency 
 5) Household overview  
 6) Banking system  
-7) Donations  
+7) Donations 
 8) Fees & Collection
 9) O&M Cost; Monitoring; Repair  
 10) Documentation(s)
@@ -322,12 +322,82 @@ plt.ylabel('Number of Respondents');
 
 Conclusion - Most of the interviewees were chairperson of their respective WUC. My assumption is that they are sufficiently aware of most operations within the committee and are able to provide reliable answers. The treasurers are most likely more aware and knowledgable of the financial characteristics and the guards of monitoring and operation/maintenance needs. It would be interesting to know if the respondent position was related to the types of challenges reported (not observed in this project). 
 
+Training & Meeting Frequency:
+```python
+meet_f = pd.value_counts(data[8])
+meet_f.plot(kind='pie', autopct='%1.0f%%')
+plt.title('WUC Meeting Frequency');
+```
+![out-35](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-35.png)
+
+Household Overview:
+```python
+#Boxplot (shows range)
+users = data[9.2]
+sns.boxplot(x=users, palette='ocean').set(xlabel='Number of Households');
+```
+![out-36](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-36.png)
+
+```python
+#Bar Graph (exposes missing data, shows variation)
+users.plot(kind='bar', color='navy')
+plt.hlines(y=87, xmin=-1, xmax=23, color='olive')
+plt.title('Number of Households per Borehole')
+plt.xlabel('Respondent')
+plt.ylabel('Number of Households');
+```
+![out-37](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-37.png)
+
+Conclusion - These graphs express the range of number of households retrieving water from the respondent's borehole. It would be interesting to analyze if there is a relationship between the number of households and the types of challenges. For example, do more households have more challenges with sanitation and hygiene? Are boreholes with fewer households stressed financially and service frequency (partially investigated)?
+
+Banking:
+```python
+bank_count = pd.value_counts(data[10.1])
+bank_count.plot(kind='bar', color=['seagreen', 'dodgerblue'])
+plt.title('Number of Respondents with Banking System')
+plt.ylabel('Number of Respondents');
+```
+![out-38](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-38.png)
+
+Conclusion - most water user committees do not have a banking system. However, I do not believe this question was well worded or understood by the respondents, and thus the results are not reflective of true occurances. It would be interesting to know if the treasurers are the participants responding yes, and it would also be interesting to have more insight into committees' finance documentation. 
+
+Water User Fees & Collection Rate:
+```python
+#User Fees
+fees_count = pd.value_counts(data['12.b.1'])
+fees_count.plot(kind='pie', autopct='%1.0f%%', colors=['cornflowerblue', 'yellowgreen'])
+plt.title('Water User Collection Fees (USH) by Number of Respondents');
+```
+![out-44](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-44.png)
+
+```python
+#Collection Rate
+collection_count = pd.value_counts(data['12.b.2'])
+collection_count.plot(kind='bar', color=['cadetblue', 'darkseagreen', 'steelblue'])
+plt.xticks(rotation=90)
+plt.title('Water User Fee Collection Rate (collection times per year)')
+plt.xlabel('Collections per Year')
+plt.ylabel('Number of Respondents');
+```
+![out-45](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-45.png)
+
+Conclusions - Most water user committees have set a 6000 UGX per household per rate water user fee rate. Just over half of the respondents reported collecting fees annually and just under half reported collecting fees monthly. One respondent claimed fees were collected weekly. It's then interesting to investigate if varying fee collection rates contributed to willingness to pay (investigated) and if fees or collection rates provided different stressors on households. It would be interesting to know how many individuals are in each household, because this can range from 1 to 10 individuals depending on marriage and number of children. 
+
+Frequency of Borehole Service:
+```python
+service_f = pd.value_counts(data[15])
+service_f.plot(kind='pie', autopct='%1.0f%%', colors=['cornflowerblue', 'seagreen', 'yellowgreen'])
+plt.title('Percentage of Respondents According to Frequence of Borehole Service');
+```
+![out-59](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-59.png)
+
+Conclusion - Most respondents service the borehole monthly. Questions that could be derived from this result are: are more repairs required for boreholes serviced less frequently? Are breakdowns less common with boreholes serviced more frequently? Are annual service costs related to frequency of borehole repair? A linear regression was completed to determine if there was a relationship between the frequency of monitoring and the frequency of borehole service (see linear regression). 
 
 
-process and many examples of code and outputs of the plots and stuff
-mention difference between doing it by hand in excel versus with python (easy to copy paste and repeat)
+
+
+
 (it'd honestly be great to create a function that would do it all... but i'm really bad at functions)
-*show some plots here!*
 
 #### Concerns
 Readdressing some of those assumptions; worried that not true reflection of respondents due to the missing and assumed data
@@ -394,11 +464,53 @@ plt.ylabel('Predicted');
 ![Out-31](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-31.png)
 
 #### Linear Regression
-Wanted to create a way to determin the relationships between different pieces of information
-moving forward would ideally be able to say x does or doesn't seem to relate to this other thing
-general result is none so far
-*include code and plots*
-because of its greater relevance beyond the project, created this as my class exercise (will see later)
+In wanting to create a way to determine the relationship between different pieces of information, I used an ordinary least squares linear regression, with an outline that is reproducible for other (numerical) answers. 
+
+Demonstrated linear regression for operation and maintenance monitoring and borehole service. The question proposed was: is there a relationship between frequency of monitoring and frequency or borehole service?
+```python
+#Isolating Data
+o_m = data.drop(index=[2, 16, 19, 22])
+x_var = o_m[14]
+y_var = o_m[15]
+
+#Scatter Plot
+plt.scatter(x_var, y_var)
+plt.xlabel('Freqeuncy of Monitoring')
+plt.ylabel('Frequency of Service');
+```
+![out-60](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-60.png)
+
+```python
+#Linear Regression
+import statsmodels.api as sm
+
+o_m_ols = sm.OLS(y_var, x_var)
+o_m_reg = o_m_ols.fit()
+print('p-value:', o_m_reg.pvalues.loc[14])
+print(o_m_reg.summary())
+print('Parameters:', o_m_reg.params)
+print('R2:', o_m_reg.rsquared)
+print('Standard errors:', o_m_reg.bse)
+print('Predicted values:', o_m_reg.predict())
+
+om_ols = o_m_reg.get_prediction()
+iv_l = om_ols.summary_frame()['obs_ci_lower']
+iv_u = om_ols.summary_frame()['obs_ci_upper']
+
+fig, ax = plt.subplots(figsize=(8, 6))
+
+ax.plot(x_var, y_var, 'o', label='Frequency')
+ax.plot(x_var, o_m_reg.fittedvalues, 'g--.', label='OLS')
+ax.plot(x_var, iv_u, 'r--')
+ax.plot(x_var, iv_l, 'r--')
+ax.legend(loc='best')
+ax.set_xlabel('Frequency of Monitoring')
+ax.set_ylabel('Frequency of Service')
+```
+![out-61a](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-61a.png)
+![out-61b](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-61b.png)
+
+Conclusion - There is somewhat of a relationship between service frequency and monitoring frequency. We see that the R^2 value is about 0.6, but there are only 19 observations and several overlapping points. There are several WUCs that monitor at about the same rate of service (which makes sense to save time and human effort). There is still a general conclusion that can be drawn where there is a greater monitoring frequency, there is a likelihood of increased service frequency. Because of this method's greater relevance beyond the project, this activity was created as my class exercise as well. 
 
 ### Text Data
 #### Cleaning & Wrangling
