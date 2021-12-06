@@ -619,26 +619,113 @@ for r in range (23):
         challenges_df.iloc[r, c] = remove_stopwords(challenges_df.iloc[r, c])
 ```
 
-Word counting was experimented with and prepped to 
+Word counting was experimented with and prepped to then complete vizualization and determine relationships. 
+```python
+from collections import Counter
+count1 = Counter(challenges_df['Challenge 1']).most_common()
+```
+![out-76](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-76.jpg)
 
+![out-76](https://user-images.githubusercontent.com/92934572/144773558-661b4c50-1ef1-4543-a76b-c90f13ab496b.jpg)
 
-Go through this process
-outline some code and clarify more assumptions
-having to redo the excel thing again
 
 #### Visualization
-Describing what word clouds are
-showing some code and *wordclouds*
-not sure if the other things fit here or in other
+Word clouds are a way to visually (more artistically) show text information regarding word frequency. As the word increases in count, and therefore commonality, the font size increases. When viewing word clouds, one is able to see the most frequently used words in a string of text. This is an engaging way to quickly learn about the challenges faced by water user committees as reported by survey participants. 
+
+```python
+#Install WordCloud package
+%pip install wordcloud
+from wordcloud import WordCloud, STOPWORDS
+
+#Challenge 1
+text1 = challenges_df['Challenge 1'].values
+stopwords1 = set(STOPWORDS)
+stopwords1.update(['community', 'failure'])
+wordcloud = WordCloud(stopwords=stopwords1).generate(str(text1))
+plt.imshow(wordcloud)
+plt.axis('off')
+plt.show()
+```
+![out-83](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-83.jpg)
+
+![out-83](https://user-images.githubusercontent.com/92934572/144772407-9f1c9c1a-e24b-44f6-b14a-f9bc0bc9867c.jpg)
+
+The previous word cloud only shows the common words for the responses within the "Challenge 1" column. When converted to lists, the challenges across columns can be combined and then counted for both word clouds and other graphical information. 
+```python
+#Combining the challenges
+list1 = challenges_df['Challenge 1'].astype(str).values.tolist()
+list2 = challenges_df['Challenge 2'].astype(str).values.tolist()
+list3 = challenges_df['Challenge 3'].astype(str).values.tolist()
+list4 = challenges_df['Challenge 4'].astype(str).values.tolist()
+combined_list = list1 + list2 + list3 + list4
+
+#Create WordCloud for Combined List
+wordcloud = WordCloud(stopwords=stopwords3, background_color='mintcream').generate(str(combined_list))
+plt.imshow(wordcloud, interpolation='spline36')
+plt.axis('off');
+```
+![out-87](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-87.jpg)
+
+```python
+#Creating Counted list and DataFrame
+total_common_list = Counter(combined_list).most_common()
+tcl_df = pd.DataFrame.from_dict(total_common_list)
+tcl_df = tcl_df.rename(columns={0: "Common Challenges", 1 : "Count"})
+tcl_df = tcl_df.drop(index=0)
+tcl_df = tcl_df.reset_index(drop=True)
+
+#Bar Graph of Common Challenges
+tcl_df.plot(kind='bar', color='darkseagreen')
+plt.title('Number of Respondents Identifying Key Challenge')
+plt.xlabel('Challenge Type - see key')
+plt.ylabel('Number of Respondents');
+```
+![out-89](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-89.jpg)
 
 #### Determining Relationships
-isolating the data and doing the counting stuff
+To determine the relationship between financial characteristics and identified challenges, the water user fee and the water user fee collection rate were isolated and then evaluated according to most common challenge. An example of the 6000 UGX water user fee is shown below. For full results, see notebook. For additional, partial results, see the Results section. 
+```python
+#User Fee = 6000 per year
+fee_6000 = challenges_df.copy()
+
+for r in range(23):
+    if challenges_df.iloc[r, 4] == 5000:
+        fee_6000 = fee_6000.drop(index=r)
+fee_6000
+
+#Combining the challenges for 6000
+fee6_1 = fee_6000['Challenge 1'].astype(str).values.tolist()
+fee6_2 = fee_6000['Challenge 2'].astype(str).values.tolist()
+fee6_3 = fee_6000['Challenge 3'].astype(str).values.tolist()
+fee6_4 = fee_6000['Challenge 4'].astype(str).values.tolist()
+combined_fee6 = fee6_1 + fee6_2 + fee6_3 + fee6_4
+
+#Create WordCloud for 6000 List
+stopwords6 = set(STOPWORDS)
+stopwords6.update(['community', 'failure', 'borehole'])
+wordcloud = WordCloud(stopwords=stopwords6, background_color='mintcream').generate(str(combined_fee6))
+plt.imshow(wordcloud, interpolation='spline36')
+plt.axis('off');
+```
+![out-96](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-96.jpg)
+```python
+#Creating Counted list and DataFrame - User Fee 6000
+fee6_list = Counter(combined_fee6).most_common()
+fee6_df = pd.DataFrame.from_dict(fee6_list)
+fee6_df = fee6_df.rename(columns={0: "Common Challenges", 1 : "Count"})
+fee6_df = fee6_df.drop(index=0)
+fee6_df = fee6_df.reset_index(drop=True)
+
+#Bar Graph of Common Challenges - user Fee 6000
+fee6_df.plot(kind='bar', color='darkseagreen')
+plt.title('Number of Respondents Identifying Key Challenges for 6000 UGX Fee')
+plt.xlabel('Challenge Type - see key')
+plt.ylabel('Number of Respondents');
+```
+![out-98](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-98.jpg)
 
 #### Concerns
-This is difficult to reproduce because of the way I collected data, and also because of how I managed to put it into excel and python
-would have to manipulate the excel file a bit, or create a completely, new one like i did before being able to do any of this stuff
-wasn't really clear on text classification before and got lost in the tokenization of things, so I decided to forgo it
-This isn't going to be the depth of analysis that I had originally wanted, so the pieces were carefully chosen
+This is difficult to reproduce because of the way I collected data, and also because of how I managed to put it into excel and python. Thw excel file would have to be reoganized again to better fit the needs of analysis. My original intention was to perform a text classification, however, I got lost in the tokenization and reverted back to a counting method for observing the text information. Once again, the assumptions made in the process of reorganizing and evaluating the data has the potential to lose the true intention of the participants' responses. Although this method did not result in the intended depth of analysis, the pieces of information used were carefully chosen to still obtain an answer to the original project question, to learn new documentation, and to achieve the project goal. 
 
 ## Results
 Question: review the project question
