@@ -33,7 +33,9 @@ To accomplish this mission, ISU-UP has drilled boreholes in the surrounding regi
 
 This original research and the reimagined results assist ISU-UP in determining the needs of the community and provide clear evidence for future improvements to the WASH program, and by extension, improving the lives of the surrounding community. 
 
-![Borehole-children](https://user-images.githubusercontent.com/92934572/144869420-5e3e210e-5d6d-4093-9dc8-052409b09081.png)![Borehole-water-user](https://user-images.githubusercontent.com/92934572/144869432-aea19883-7da4-4b46-a02e-be010ebb3fe0.png)![Borehole-isu-up](https://user-images.githubusercontent.com/92934572/144869445-ec76765e-814a-472c-a62d-241522c3dbc5.png)
+![Borehole-children](https://user-images.githubusercontent.com/92934572/144869420-5e3e210e-5d6d-4093-9dc8-052409b09081.png)
+![Borehole-water-user](https://user-images.githubusercontent.com/92934572/144869432-aea19883-7da4-4b46-a02e-be010ebb3fe0.png)
+![Borehole-isu-up](https://user-images.githubusercontent.com/92934572/144869445-ec76765e-814a-472c-a62d-241522c3dbc5.png)
 
 ## Data
 ### Collection Method
