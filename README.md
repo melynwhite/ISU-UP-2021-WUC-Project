@@ -60,7 +60,7 @@ The remaining questions were used as the data input. The more relevant informati
 ### Data Needs
 Since the data was originally in a pdf format and crudely converted to excel, the data needed to be reorganized into another excel document before loading into jupyter notebook. For any further downstream analysis, the data needed to be within one excel sheet, with the indeces being the respondents and the columns the question. Questions were referred to by the number rather than description for the sake of abbreviation. 
 
-### Concerns
+### Concerns & Reflection
 Much of the collection method was beyond my control and I had limited insight into how the interviews were being conducted, so I had some concerns regarding that process. There were questions within the final version of the survey where I was questioning their relevance or the accuracy of the diction used, but ultimately included them. I was concerned regarding whether the participants would interpret the questions in the same fashion as I intended, and there were some cases where misunderstandings occurred. There were also several responses where the handwriting was illegible, and this the analysis of those responses required more assumptions than others. The more assumptions input into the data, the less reflective they are of the original respondent's perspectives. There was original concern regarding how the multiple short answer questions would be included in the analysis, as there were several different answers combined into a single cell. This was later alleviated by creating a new excel document to reflect the different challenges. 
 
 ## Analysis
@@ -405,7 +405,7 @@ sns.heatmap(simple_corr);
 ```
 ![out-71](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-71.png)
 
-#### Concerns
+#### Concerns & Reflection
 To readdressing some of those assumptions, it is worrying that the data used is not a true reflection of respondents due to the missing and assumed data. The assumptions made were based on averages of other responses, based on the knowledge of how a participant answer another question, or my own interpretation of the written answers. At this point in understanding the data, there is also a concern regarding how to complete the text wrangling, visualization, and analysis. 
 
 ### Classification & Statistics
@@ -724,22 +724,272 @@ plt.ylabel('Number of Respondents');
 ```
 ![out-98](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-98.jpg)
 
-#### Concerns
+#### Concerns & Reflection
 This is difficult to reproduce because of the way I collected data, and also because of how I managed to put it into excel and python. Thw excel file would have to be reoganized again to better fit the needs of analysis. My original intention was to perform a text classification, however, I got lost in the tokenization and reverted back to a counting method for observing the text information. Once again, the assumptions made in the process of reorganizing and evaluating the data has the potential to lose the true intention of the participants' responses. Although this method did not result in the intended depth of analysis, the pieces of information used were carefully chosen to still obtain an answer to the original project question, to learn new documentation, and to achieve the project goal. 
 
 ## Results
-Question: review the project question
-Answer: what the result is
+Question: Is there a relationship between financial characteristics and observed challenges as reported by surveyed water user committee members?
+
+Answer: Not really, the most common challenges are consistent across both water user fee quantities and across all water user fee collection rates. 
 ### Common Challenges
-maybe a thought here, maybe not
+The top four common challenges across all respondents are:
+- failure of community members to pay water user fees
+- disunity during fee collection
+- misunderstandings of and between committee members
+- disunity between water user committee members and water users
+
+```python
+#Creating Counted list and DataFrame
+total_common_list = Counter(combined_list).most_common()
+tcl_df = pd.DataFrame.from_dict(total_common_list)
+tcl_df = tcl_df.rename(columns={0: "Common Challenges", 1 : "Count"})
+tcl_df = tcl_df.drop(index=0)
+tcl_df = tcl_df.reset_index(drop=True)
+tcl_df
+```
+![out-88](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-88.jpg)
+
+These results can be broken down into two categories:
+- unwillingness of water users to pay fees
+- disconnect between water users and committee members
+
+With these overall results, we can then determine how they differ according to financial aspects as recorded by participants. The two examined are: Water User Fee Amount and Water User Fee Collection Rate. 
+
 #### Different Water User Fee Amount
-the code and clear result of this output
+##### 5000 UGX Annual Fee
+```python
+#Isolating Challenges
+fee_5000 = challenges_df.copy()
+
+for r in range(23):
+    if challenges_df.iloc[r, 4] == 6000:
+        fee_5000 = fee_5000.drop(index=r)
+        
+#Combining the challenges for 5000
+fee5_1 = fee_5000['Challenge 1'].astype(str).values.tolist()
+fee5_2 = fee_5000['Challenge 2'].astype(str).values.tolist()
+fee5_3 = fee_5000['Challenge 3'].astype(str).values.tolist()
+fee5_4 = fee_5000['Challenge 4'].astype(str).values.tolist()
+combined_fee5 = fee5_1 + fee5_2 + fee5_3 + fee5_4
+
+#Create WordCloud for 5000 List
+stopwords5 = set(STOPWORDS)
+stopwords5.update(['community', 'failure', 'borehole'])
+wordcloud = WordCloud(stopwords=stopwords5, background_color='mintcream').generate(str(combined_fee5))
+plt.imshow(wordcloud, interpolation='spline36')
+plt.axis('off');
+```
+![out-93](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-93.jpg)
+```python
+#Creating Counted list and DataFrame - User Fee 5000
+fee5_list = Counter(combined_fee5).most_common()
+fee5_df = pd.DataFrame.from_dict(fee5_list)
+fee5_df = fee5_df.rename(columns={0: "Common Challenges", 1 : "Count"})
+fee5_df = fee5_df.drop(index=0)
+fee5_df = fee5_df.reset_index(drop=True)
+fee5_df
+```
+![out-94](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-94.jpg)
+```python
+#Bar Graph of Common Challenges - 5000 User Fee
+fee5_df.plot(kind='bar', color='darkseagreen')
+plt.title('Number of Respondents Identifying Key Challenge for 5000 UGX Fee')
+plt.xlabel('Challenge Type - see key')
+plt.ylabel('Number of Respondents');
+```
+![out-95](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-95.jpg)
+
+Note: Most common challenge for respondents with 5000 UGX as the water user fee is failure of the community member to pay their fees, the next being disunity during fee collection
+
+##### 6000 UGX Annual Fee
+#User Fee = 6000 per year
+```python
+fee_6000 = challenges_df.copy()
+
+for r in range(23):
+    if challenges_df.iloc[r, 4] == 5000:
+        fee_6000 = fee_6000.drop(index=r)
+fee_6000
+
+#Combining the challenges for 6000
+fee6_1 = fee_6000['Challenge 1'].astype(str).values.tolist()
+fee6_2 = fee_6000['Challenge 2'].astype(str).values.tolist()
+fee6_3 = fee_6000['Challenge 3'].astype(str).values.tolist()
+fee6_4 = fee_6000['Challenge 4'].astype(str).values.tolist()
+combined_fee6 = fee6_1 + fee6_2 + fee6_3 + fee6_4
+
+#Create WordCloud for 6000 List
+stopwords6 = set(STOPWORDS)
+stopwords6.update(['community', 'failure', 'borehole'])
+wordcloud = WordCloud(stopwords=stopwords6, background_color='mintcream').generate(str(combined_fee6))
+plt.imshow(wordcloud, interpolation='spline36')
+plt.axis('off');
+```
+![out-96](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-96.jpg)
+```python
+#Creating Counted list and DataFrame - User Fee 6000
+fee6_list = Counter(combined_fee6).most_common()
+fee6_df = pd.DataFrame.from_dict(fee6_list)
+fee6_df = fee6_df.rename(columns={0: "Common Challenges", 1 : "Count"})
+fee6_df = fee6_df.drop(index=0)
+fee6_df = fee6_df.reset_index(drop=True)
+fee6_df
+```
+![out-97](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-97.jpg)
+```python
+#Bar Graph of Common Challenges - user Fee 6000
+fee6_df.plot(kind='bar', color='darkseagreen')
+plt.title('Number of Respondents Identifying Key Challenges for 6000 UGX Fee')
+plt.xlabel('Challenge Type - see key')
+plt.ylabel('Number of Respondents');
+```
+![out-98](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-98.jpg)
+        
+Note: Most common challenge for respondents with 6000 UGX as the water user fee is failure of the community member to pay their fees, disunity during fee collection, and misunderstandings of or between committee members. I think because there are more Respondents reporting a 6000 UGX annual water user fee, that there are simply more responses for challenges.
 
 #### Different Water User Fee Collection Rate
-the code and clear result of this output
+```python
+#Same Comparison process, but with collection rate
+challenges_df['Collection Rate'].unique()
+
+#Collection Rate Challenges
+
+#Collection Rate - Weekly
+#Isolation
+rate_52 = challenges_df.copy()
+for r in range(23):
+    if challenges_df.iloc[r, 5] == 12:
+        rate_52 = rate_52.drop(index=r)
+    if challenges_df.iloc[r, 5] == 1:
+        rate_52 = rate_52.drop(index=r)
+#Combination
+rate52_1 = rate_52['Challenge 1'].astype(str).values.tolist()
+rate52_2 = rate_52['Challenge 2'].astype(str).values.tolist()
+rate52_3 = rate_52['Challenge 3'].astype(str).values.tolist()
+rate52_4 = rate_52['Challenge 4'].astype(str).values.tolist()
+combined_rate52 = rate52_1 + rate52_2 + rate52_3 + rate52_4
+#WordCloud
+stopwords = set(STOPWORDS)
+stopwords.update(['community', 'failure', 'borehole'])
+wordcloud52 = WordCloud(stopwords=stopwords, background_color='mintcream').generate(str(combined_rate52))
+#Counted List & DataFrame
+rate52_list = Counter(combined_fee6).most_common()
+rate52_df = pd.DataFrame.from_dict(rate52_list)
+rate52_df = rate52_df.rename(columns={0: "Common Challenges", 1 : "Count"})
+rate52_df = rate52_df.drop(index=0)
+rate52_df = rate52_df.reset_index(drop=True)
+
+#Collection Rate - Monthly
+#Isolation
+rate_12 = challenges_df.copy()
+for r in range(23):
+    if challenges_df.iloc[r, 5] == 52:
+        rate_12 = rate_12.drop(index=r)
+    if challenges_df.iloc[r, 5] == 1:
+        rate_12 = rate_12.drop(index=r)
+#Combination
+rate12_1 = rate_12['Challenge 1'].astype(str).values.tolist()
+rate12_2 = rate_12['Challenge 2'].astype(str).values.tolist()
+rate12_3 = rate_12['Challenge 3'].astype(str).values.tolist()
+rate12_4 = rate_12['Challenge 4'].astype(str).values.tolist()
+combined_rate12 = rate12_1 + rate12_2 + rate12_3 + rate12_4
+#WordCloud
+wordcloud12 = WordCloud(stopwords=stopwords, background_color='mintcream').generate(str(combined_rate12))
+#Counted List & DataFrame
+rate12_list = Counter(combined_rate12).most_common()
+rate12_df = pd.DataFrame.from_dict(rate12_list)
+rate12_df = rate12_df.rename(columns={0: "Common Challenges", 1 : "Count"})
+rate12_df = rate12_df.drop(index=0)
+rate12_df = rate12_df.reset_index(drop=True)
+
+#Collection Rate - Annually
+#Isolation
+rate_1 = challenges_df.copy()
+for r in range(23):
+    if challenges_df.iloc[r, 5] == 52:
+        rate_1 = rate_1.drop(index=r)
+    if challenges_df.iloc[r, 5] == 12:
+        rate_1 = rate_1.drop(index=r)
+#Combination
+rate1_1 = rate_1['Challenge 1'].astype(str).values.tolist()
+rate1_2 = rate_1['Challenge 2'].astype(str).values.tolist()
+rate1_3 = rate_1['Challenge 3'].astype(str).values.tolist()
+rate1_4 = rate_1['Challenge 4'].astype(str).values.tolist()
+combined_rate1 = rate1_1 + rate1_2 + rate1_3 + rate1_4
+#WordCloud
+wordcloud1 = WordCloud(stopwords=stopwords, background_color='mintcream').generate(str(combined_rate1))
+#Counted List & DataFrame
+rate1_list = Counter(combined_rate1).most_common()
+rate1_df = pd.DataFrame.from_dict(rate1_list)
+rate1_df = rate1_df.rename(columns={0: "Common Challenges", 1 : "Count"})
+rate1_df = rate1_df.drop(index=0)
+rate1_df = rate1_df.reset_index(drop=True)
+```
+##### Weekly Collection Rate
+```python
+#Weekly Collection Rate WordCloud
+plt.imshow(wordcloud52, interpolation='spline36')
+plt.axis('off');
+```
+![out-101](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-101.jpg)
+```python
+#Weekly Collection Rate Challenges
+rate52_df
+```
+![out-102](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-102.jpg)
+```python
+#Bar Graph of Common Challenges - Weekly
+rate52_df.plot(kind='bar', color='darkseagreen')
+plt.title('Number of Respondents Identifying Key Challenges for Weekly Collection Rate')
+plt.xlabel('Challenge Type - see key')
+plt.ylabel('Number of Respondents');
+```
+![out-103](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-103.jpg)
+
+##### Monthly Collection Rate
+```python
+#Monthly Collection Rate WordCloud
+plt.imshow(wordcloud12, interpolation='spline36')
+plt.axis('off');
+```
+![out-104](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-104.jpg)
+```python
+#Monthly Collection Rate Challenges
+rate12_df
+```
+![out-105](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-105.jpg)
+```python
+#Bar Graph of Common Challenges - Monthly
+rate12_df.plot(kind='bar', color='darkseagreen')
+plt.title('Number of Respondents Identifying Key Challenge for Monthly Collection Rate')
+plt.xlabel('Challenge Type - see key')
+plt.ylabel('Number of Respondents');
+```
+![out-106](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-106.jpg)
+
+##### Annual Collection Rate
+```python
+#Annual Collection Rate WordCloud
+plt.imshow(wordcloud1, interpolation='spline36')
+plt.axis('off');
+```
+![out-107](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-107.jpg)
+```python
+#Annual Collection Rate Challenges
+rate1_df
+```
+![out=108](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-108.jpg)
+```python
+#Bar Graph of Common Challenges - Annual
+rate1_df.plot(kind='bar', color='darkseagreen')
+plt.title('Number of Respondents Identifying Key Challenge for Annual Collection Rate')
+plt.xlabel('Challenge Type - see key')
+plt.ylabel('Number of Respondents');
+```
+![out-109](https://github.com/melynwhite/ISU-UP-2021-WUC-Project/blob/master/images/out-109.jpg)
 
 ### Discussion
-thoughts on those results; briefly mention wanting to do more analysis but felt limited by data, knowledge, and time
+Challenges, regardless of the water user fee or the collection rate, remain consistently an unwillingness of the water user to pay the fee. This is demonstrated by "disunity during fee collection" and "failure of community members to pay fees" being one of the highest counted challenges. Misunderstandings of the committee members is also a frequent challenge reported among respondents. Although more analysis was desired, the project and subsequent results was limited by data, knowledge, and time. 
 
 ### Implications
 what do the results mean for ISU-UP
